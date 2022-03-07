@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 70px;
     padding-bottom: 20px;
 }
 
@@ -21,4 +21,60 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+#IndexContainer {
+    display: table;
+    height:auto;
+    width:auto;
+    margin-left:50px;
+}
+
+#topContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.siteName {
+    font-size:10rem;
+}
+
+
+#Slogan {
+    font-size: 6rem;
+    color: #0073CA;
+}
+#SloganCont {
+    transform: translateY(-10.39rem);
+    margin-left: 37.5rem;
+}
+#startChart {
+    width: 735px;
+    height: 25.5rem;
+    margin-top:20px;
+    margin-left: -10rem;
+}
+#SignUp {
+    height: 9rem;
+    width: 20rem;
+    background-color: #0073CA;
+    transform: translateY(-8rem);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size:2rem;
+}
+
+    #SignUp:hover {
+        background-color: #005EA5;
+    }
+
+.LoginBtn {
+    height: 2.2rem;
+    background-color: #0073CA;
+    width: fit-content;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    color:#ffffff;
 }
