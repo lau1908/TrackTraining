@@ -94,3 +94,10 @@ textarea {
         background-color: #005EA5;
     }
 
+#User {
+    background-color: aquamarine;
+    height: 50px;
+    width: fit-content;
+    display:flex;
+    flex-direction:row-reverse;
+}
