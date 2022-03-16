@@ -1,17 +1,71 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<button id="update-line-chart">Update Data</button>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div id="line-chart"></div>
+
+<!-- https://developers.google.com/chart/interactive/docs/quick_start -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+   
+
+    const lineChart = {
+        chart: null,
+        data: [
+            ['Year', 'Sales'],
+            ['2015', 5752],
+            ['2016', 5621],
+            ['2017', 5876],
+            ['2018', 6585],
+            ['2019', 6100]
+        ],
+        element: '#line-chart',
+        options: {
+            title: 'Total Units Sold History',
+            width: 1000,
+            height: 500
+        }
+    };
+
+    // https://developers.google.com/chart/interactive/docs/gallery/piechart
+    // https://developers.google.com/chart/interactive/docs/gallery/barchart
+    // https://developers.google.com/chart/interactive/docs/gallery/linechart
+    // https://developers.google.com/chart/interactive/docs/reference#draw
+    // https://developers.google.com/chart/interactive/docs/reference#arraytodatatable
+    const init = () => {
+
+        lineChart.chart = new google.visualization.LineChart(
+            document.querySelector(lineChart.element)
+        );
+        lineChart.chart.draw(
+            google.visualization.arrayToDataTable(lineChart.data),
+            lineChart.options
+        );
+    };
+
+    // https://developers.google.com/chart/interactive/docs/quick_start
+    google.charts.load('current', {
+        packages: ['corechart'],
+        callback: init
+    });
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+    // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+    document.querySelector('#update-line-chart').addEventListener('click', () => {
+        lineChart.data = [
+            ['Year', 'Sales'],
+            ['2015', 9],
+            ['2016', 99],
+            ['2017', 999],
+            ['2018', 9999],
+            ['2019', 99999]
+        ];
+        lineChart.chart.draw(
+            google.visualization.arrayToDataTable(lineChart.data),
+            lineChart.options
+        );
+    });
+
+</script>
