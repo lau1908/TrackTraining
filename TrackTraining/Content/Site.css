@@ -95,9 +95,12 @@ textarea {
     }
 
 #User {
-    background-color: aquamarine;
     height: 50px;
-    width: fit-content;
-    display:flex;
-    flex-direction:row-reverse;
+    width: 150px;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 10px;
+}
+#SessionUserName {
+    
 }
