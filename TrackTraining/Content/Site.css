@@ -32,21 +32,19 @@ textarea {
     justify-content:center;
     margin:1rem;
 }
-.topContainer {
-  max-width:100%
-  
-    
-}
-.chart {
-  
-}
-#startchart {
-    
-}
-.siteName {
-  font-size:4rem;
+#RunMan{
+    width: 250px;
+    height:auto;
 }
 
+
+.siteName {
+    font-size: 4rem;
+    
+}
+.ptName {
+    color: #0073CA;
+}
 
 .Slogan {
     font-size: 3rem;
@@ -65,28 +63,34 @@ textarea {
     margin-top:20px;
     margin-left: -10rem;
 }
-/*#SignUp {
-    height: 9rem;
-    width: 20rem;
+#signup {
     background-color: #0073CA;
-    transform: translateY(-8rem);
-    border-radius: 0.5rem;
-    display: flex;
     justify-content: center;
-    align-items: center;
     color: #ffffff;
-    font-size:2rem;
+    width: 140px;
+    height: 60px;
+    font-size: 19px;
+    margin: 20px 0px 5px 0px;
 }
-*/
-.signupp:hover {
+
+#signup:hover {
     background-color: #005EA5;
 }
 
 .LoginBtn {
-    height: 2.2rem;
-    background-color: #0073CA;
     width: fit-content;
     padding-left: 0.1rem;
     padding-right: 0.1rem;
-    color:#ffffff;
+    color: #0073CA;
+    text-decoration:none;
 }
+    .LoginBtn:hover {
+        color: #005EA5;
+    }
+.btn-primary {
+    background-color: #0073CA;
+}
+    .btn-primary:hover {
+        background-color: #005EA5;
+    }
+
