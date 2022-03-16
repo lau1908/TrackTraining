@@ -53,6 +53,7 @@ namespace TrackTraining.Controllers
 
                 var ctx = Request.GetOwinContext();
                 var authManager = ctx.Authentication;
+                Session["username"] = model.Username;
                 authManager.SignIn(identity);
 
                 return Redirect(GetRedirectUrl(model.ReturnUrl));
