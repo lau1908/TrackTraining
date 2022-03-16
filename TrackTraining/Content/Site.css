@@ -22,38 +22,50 @@ select,
 textarea {
     max-width: 280px;
 }
-#IndexContainer {
-    display: table;
-    height:auto;
-    width:auto;
-    margin-left:50px;
+.IndexContainer {
+    display:flex;
+    flex-direction:column;
+    
 }
-
-#topContainer {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+.kkkk{
+    display:flex;
+    justify-content:center;
+    margin:1rem;
+}
+.topContainer {
+  max-width:100%
+  
+    
+}
+.chart {
+  
+}
+#startchart {
+    
 }
 .siteName {
-    font-size:10rem;
+  font-size:4rem;
 }
 
 
-#Slogan {
-    font-size: 6rem;
+.Slogan {
+    font-size: 3rem;
     color: #0073CA;
 }
-#SloganCont {
-    transform: translateY(-10.39rem);
-    margin-left: 37.5rem;
+.SloganCont {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
 }
-#startChart {
+.startChart {
     width: 735px;
     height: 25.5rem;
     margin-top:20px;
     margin-left: -10rem;
 }
-#SignUp {
+/*#SignUp {
     height: 9rem;
     width: 20rem;
     background-color: #0073CA;
@@ -65,10 +77,10 @@ textarea {
     color: #ffffff;
     font-size:2rem;
 }
-
-    #SignUp:hover {
-        background-color: #005EA5;
-    }
+*/
+.signupp:hover {
+    background-color: #005EA5;
+}
 
 .LoginBtn {
     height: 2.2rem;
