@@ -52,11 +52,11 @@
 
                 @if (Request.IsAuthenticated)
                 {
-                    <div id="User">
-                        <img src="https://www.transparentpng.com/thumb/user/blak-frame-user-profile-png-icon--cupR3D.png" alt="Alternate Text" />
-                        @Session["user"]
-                    </div>
-                    @Session["username"];
+                        <div id="User">
+                            <img style="margin-left: 10px;" src="https://www.transparentpng.com/thumb/user/blak-frame-user-profile-png-icon--cupR3D.png" alt="Alternate Text" />
+                            @Session["username"]
+                        </div>
+            
                 }
                 else
                 {

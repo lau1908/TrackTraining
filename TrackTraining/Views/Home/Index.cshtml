@@ -22,15 +22,24 @@
                 <div class="SloganCont">
                     <h2 id="Slogan">Where ever, when ever</h2>
                 </div>
-                <button type="button" class="btn btn-primary me-3" id="signup">
-                    Sign up         
+                @if (Request.IsAuthenticated)//"Hvis personen er logget ind..."
+                {
+                    //knapperne vises ikke hvis brugeren er logget ind
+                }
+                else
+                {
+                    <button type="button" class="btn btn-primary me-3" id="signup">
+                        Sign up
 
-                    <i class='bx bx-user-circle'></i>
-                </button>
-                <div>
-                    <p class="konto">Har du allerede en konto?  <span> <a class="LoginBtn"> <b>Login her</b></a></span></p>
-                </div>
+                        <i class='bx bx-user-circle'></i>
+                    </button>
+                    <div>
+                        <p class="konto">Har du allerede en konto?  <span> <a class="LoginBtn"> <b>Login her</b></a></span></p>
+                    </div>
+                }
+
             </div>
+
 
             <img id="RunMan" src="https://www.transparentpng.com/thumb/fitness/hxIU0n-download-fitness-png.png" />
 
