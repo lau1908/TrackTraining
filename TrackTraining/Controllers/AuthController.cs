@@ -98,6 +98,7 @@ namespace TrackTraining.Controllers
             if (result.Succeeded)
             {
                 await SignIn(user);
+                Session["username"] = model.Username;
                 return RedirectToAction("index", "home");
             }
 
