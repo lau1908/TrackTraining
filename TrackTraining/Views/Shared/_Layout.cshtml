@@ -10,6 +10,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <!-- Container wrapper -->
@@ -49,53 +50,46 @@
                 </ul>
 
 
-                <!-- Left links -->
+                @if (Request.IsAuthenticated)
+                {
+                    <div id="User">
+                        <img src="https://www.transparentpng.com/thumb/user/blak-frame-user-profile-png-icon--cupR3D.png" alt="Alternate Text" />
+                        @Session["user"]
+                    </div>
+                }
+                else
+                {
+                    <div class="d-flex align-items-center">
+                        <a href="@Url.Action("login", "auth")">
+                            <button type="button" class="btn btn-link px-3 me-2">
+                                Login
+                            </button>
+                        </a>
+                        <a href="@Url.Action("register", "auth")">
+                            <button type="button" class="btn btn-primary me-3">
+                                Sign up for free
+                            </button>
+                        </a>
 
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-link px-3 me-2">
-                        Login
-                    </button>
-                    <button type="button" class="btn btn-primary me-3">
-                        Sign up for free
-                    </button>
+                    </div>
+                }
 
-                </div>
             </div>
             <!-- Collapsible wrapper -->
         </div>
         <!-- Container wrapper -->
     </nav>
 
-    <!-- Navbar -->
-    @*<style>
-
-            .center {
-                left: 20%;
-            }
-
-            li {
-                font-size: 1.5em;
-            }
-
-            @@media screen and (max-device-width:414px) {
-                li {
-                    all: unset;
-                }
-            }
-        </style>*@
 
     <div class="container body-content">
         @RenderBody()
-        @*<hr />*@
-        @*<footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    
-    
+
+
 
     @RenderSection("scripts", required: false)
 
