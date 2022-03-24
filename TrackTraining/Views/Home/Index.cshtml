@@ -27,13 +27,13 @@
                 }
                 else
                 {
-                    <button type="button" class="btn btn-primary me-3" id="signup">
-                        Sign up
-
-                        <i class='bx bx-user-circle'></i>
-                    </button>
+            <a href="@Url.Action("register", "auth")">
+                <button type="button" class="btn btn-primary me-3" style="height:70px; margin:40px 0 0px 0;">
+                    Sign up for free
+                </button>
+            </a>
                     <div>
-                        <p class="konto">Har du allerede en konto?  <span> <a class="LoginBtn"> <b>Login her</b></a></span></p>
+                        <p class="konto">Har du allerede en konto?  <span> <a href="@Url.Action("login", "auth")">Login</a></span></p>
                     </div>
                 }
 
