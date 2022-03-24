@@ -30,7 +30,7 @@ textarea {
 .kkkk{
     display:flex;
     justify-content:center;
-    margin:1rem;
+    margin:0;
 }
 #RunMan{
     width: 250px;
@@ -103,3 +103,19 @@ textarea {
     cursor: pointer;
 }
 
+
+#scrolly {
+    width: 1000px;
+    height: fit-content;
+    overflow: scroll;
+    overflow-y: hidden;
+    margin: 0 auto;
+    white-space: nowrap 
+}
+
+.srlimg {
+    width: 100px;
+    height: 100px;
+    margin: 20px 10px;
+    display: inline;
+}
