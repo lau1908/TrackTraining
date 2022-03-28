@@ -95,10 +95,11 @@ textarea {
     }
 
 #User {
-    height: 45px;
+    height: 50px;
     width: fit-content;
+    display: flex;
     flex-direction: row-reverse;
-    padding: 10px 0px;
+    padding: 10px;
     cursor: pointer;
 }
 
@@ -117,4 +118,32 @@ textarea {
     height: 100px;
     margin: 20px 10px;
     display: inline;
+}
+
+#Ovelsewrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+
+.ovelsediv{
+    background-color:black;
+    height:200px;
+    width:200px;
+    min-width:200px;
+    flex-grow: 1;
+    background-size:cover;
+    display:grid;
+}
+.ovelsediv:hover .OvelseNam {
+    opacity: 1;
+
+}
+.OvelseNam {
+    place-self: center;
+    opacity: 0;
+    color: white;
 }

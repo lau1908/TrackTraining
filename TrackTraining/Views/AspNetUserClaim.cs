@@ -12,14 +12,12 @@ namespace TrackTraining.Views
     using System;
     using System.Collections.Generic;
     
-    public partial class Ovelse
+    public partial class AspNetUserClaim
     {
-        public int Rekord_ID { get; set; }
-        public string OvelseNavn { get; set; }
-        public int Gentagelser { get; set; }
-        public System.DateTime Dato { get; set; }
-        public string Bruger_ID { get; set; }
-        public string Billede { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
     }

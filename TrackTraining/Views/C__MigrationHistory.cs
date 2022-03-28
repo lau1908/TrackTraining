@@ -12,15 +12,11 @@ namespace TrackTraining.Views
     using System;
     using System.Collections.Generic;
     
-    public partial class Ovelse
+    public partial class C__MigrationHistory
     {
-        public int Rekord_ID { get; set; }
-        public string OvelseNavn { get; set; }
-        public int Gentagelser { get; set; }
-        public System.DateTime Dato { get; set; }
-        public string Bruger_ID { get; set; }
-        public string Billede { get; set; }
-    
-        public virtual AspNetUser AspNetUser { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

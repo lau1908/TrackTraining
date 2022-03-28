@@ -5,10 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2e343f88790a4e49b6791ed8e9005282" Name="Diagram1">
-        <EntityTypeShape EntityType="LauOmidEksamenModel.Bruger" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="LauOmidEksamenModel.Ovelse" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="LauOmidEksamenModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="LauOmidEksamenModel.FK_Ovelse_Bruger" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LauOmidEksamenModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LauOmidEksamenModel.AspNetRole" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="LauOmidEksamenModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="LauOmidEksamenModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="LauOmidEksamenModel.AspNetUser" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="LauOmidEksamenModel.sysdiagram" Width="1.5" PointX="7.75" PointY="3.75" />
+        <AssociationConnector Association="LauOmidEksamenModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LauOmidEksamenModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LauOmidEksamenModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="LauOmidEksamenModel.Ovelse" Width="1.5" PointX="5.25" PointY="6.875" />
+        <AssociationConnector Association="LauOmidEksamenModel.FK_Ovelse_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

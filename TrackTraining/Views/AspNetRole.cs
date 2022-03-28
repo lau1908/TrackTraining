@@ -12,22 +12,18 @@ namespace TrackTraining.Views
     using System;
     using System.Collections.Generic;
     
-    public partial class Bruger
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bruger()
+        public AspNetRole()
         {
-            this.Ovelses = new HashSet<Ovelse>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int Bruger_ID { get; set; }
-        public string Fornavn { get; set; }
-        public string Efternavn { get; set; }
-        public string Email { get; set; }
-        public string Kodeord { get; set; }
-        public string username { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ovelse> Ovelses { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

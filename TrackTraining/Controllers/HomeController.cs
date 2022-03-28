@@ -27,5 +27,11 @@ namespace TrackTraining.Controllers
 
             return View();
         }
+        public ActionResult Ovelser()
+        {
+            ViewBag.Message = "Your Ovelser page.";
+
+            return View();
+        }
     }
 }
