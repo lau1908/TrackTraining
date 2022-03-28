@@ -52,11 +52,26 @@
 
                 @if (Request.IsAuthenticated)
                 {
-                        <div id="User">
-                            <img style="margin-left: 10px;" src="https://www.transparentpng.com/thumb/user/blak-frame-user-profile-png-icon--cupR3D.png" alt="Alternate Text" />
+
+
+
+
+
+                    <div class="dropdown">
+                        <a class="btn border-primary dropdown-toggle  btn-outline-primary" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             @Session["username"]
-                        </div>
-            
+                            <img id="User" style="margin-left:5px;"  src="https://www.transparentpng.com/thumb/user/blak-frame-user-profile-png-icon--cupR3D.png" />
+
+
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a href="@Url.Action("LogOut","auth")" class="logoutfisen dropdown-item">Log Out</a></li>
+                        </ul>
+                    </div>
+
+                
+
                 }
                 else
                 {

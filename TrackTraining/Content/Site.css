@@ -95,11 +95,10 @@ textarea {
     }
 
 #User {
-    height: 50px;
+    height: 45px;
     width: fit-content;
-    display: flex;
     flex-direction: row-reverse;
-    padding: 10px;
+    padding: 10px 0px;
     cursor: pointer;
 }
 
