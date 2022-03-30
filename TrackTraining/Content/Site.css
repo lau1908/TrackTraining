@@ -104,21 +104,7 @@ textarea {
 }
 
 
-/*#scrolly {
-    width: 1000px;
-    height: fit-content;
-    overflow: scroll;
-    overflow-y: hidden;
-    margin: 0 auto;
-    white-space: nowrap 
-}
 
-.srlimg {
-    width: 100px;
-    height: 100px;
-    margin: 20px 10px;
-    display: inline;
-}
 
 .Ovelsewrapper {
     display: flex;
