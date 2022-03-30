@@ -16,7 +16,7 @@
         <!-- Container wrapper -->
         <div class="container">
             <!-- Navbar brand -->
-            <a class="navbar-brand me-2" href="#">
+            <a class="navbar-brand me-2" href="@Url.Action("Index", "Home")">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="209" height="55" viewBox="0 0 209 55">
                     <defs>
                         <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 972 254">
@@ -52,11 +52,26 @@
 
                 @if (Request.IsAuthenticated)
                 {
-                        <div id="User">
-                            <img style="margin-left: 10px;" src="https://www.transparentpng.com/thumb/user/blak-frame-user-profile-png-icon--cupR3D.png" alt="Alternate Text" />
+
+
+
+
+
+                    <div class="dropdown">
+                        <a class="btn border-primary dropdown-toggle  btn-outline-primary" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             @Session["username"]
-                        </div>
-            
+                            <img id="User" style="margin-left:5px;"  src="https://www.transparentpng.com/thumb/user/blak-frame-user-profile-png-icon--cupR3D.png" />
+
+
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a href="@Url.Action("LogOut","auth")" class="logoutfisen dropdown-item">Log Out</a></li>
+                        </ul>
+                    </div>
+
+                
+
                 }
                 else
                 {
