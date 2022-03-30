@@ -10,9 +10,21 @@
     <title>Øvelser</title>
 </head>
 <body>
-    <div id="Ovelsewrapper">
+    <h2 class="øvelseName">Primære øvelser</h2>
 
-        @for (int i = 0; i < 11; i++)
+    <div class="Ovelsewrapper">
+
+        @for (int i = 0; i < 5; i++)
+        {
+            <div class="ovelsediv" style="background-image: ;">
+                <p class="OvelseNam">Navn på øvelse </p>
+            </div>
+
+        }
+    </div>
+    <h2 class="øvelseName">Andre øvelser</h2>
+    <div class="Ovelsewrapper">
+        @for (int i = 0; i < 8; i++)
         {
             <div class="ovelsediv" style="background-image: ;">
                 <p class="OvelseNam">Navn på øvelse </p>

@@ -101,6 +101,7 @@ textarea {
     flex-direction: row-reverse;
     padding: 10px;
     cursor: pointer;
+    padding-left: 0;
 }
 
 
@@ -120,12 +121,13 @@ textarea {
     display: inline;
 }
 
-#Ovelsewrapper {
+.Ovelsewrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 20px;
+    margin-top: 20px;
 }
 
 
@@ -146,4 +148,8 @@ textarea {
     place-self: center;
     opacity: 0;
     color: white;
+}
+
+.øvelseName{
+    margin-top: 20px;
 }
