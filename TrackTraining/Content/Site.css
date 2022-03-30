@@ -103,9 +103,6 @@ textarea {
     padding-left: 0;
 }
 
-
-
-
 .Ovelsewrapper {
     display: flex;
     flex-direction: row;
@@ -137,4 +134,9 @@ textarea {
 
 .øvelseName{
     margin-top: 20px;
+}
+
+.line-chart{
+    height:100px;
+    width:auto;
 }
