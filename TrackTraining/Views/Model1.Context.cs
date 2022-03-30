@@ -30,7 +30,8 @@ namespace TrackTraining.Views
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Ovelser> Ovelsers { get; set; }
+        public virtual DbSet<Rekorder2> Rekorder2 { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Ovelse> Ovelses { get; set; }
     }
 }

@@ -66,16 +66,23 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
-        <EntityType Name="Ovelse">
+        <EntityType Name="Ovelser">
           <Key>
-            <PropertyRef Name="Rekord_ID" />
+            <PropertyRef Name="OvelseId" />
           </Key>
-          <Property Name="Rekord_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OvelseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OvelseNavn" Type="nvarchar" MaxLength="50" />
-          <Property Name="Gentagelser" Type="int" Nullable="false" />
-          <Property Name="Dato" Type="date" Nullable="false" />
-          <Property Name="Bruger_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Billede" Type="nvarchar(max)" />
+          <Property Name="Billede" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rekorder2">
+          <Key>
+            <PropertyRef Name="RekordId" />
+          </Key>
+          <Property Name="RekordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OvelseId" Type="int" Nullable="false" />
+          <Property Name="BrugerId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="dato" Type="date" Nullable="false" />
+          <Property Name="Gentagelser" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -143,15 +150,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ovelse_AspNetUsers">
+        <Association Name="FK_Rekorder2_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="Ovelse" Type="Self.Ovelse" Multiplicity="*" />
+          <End Role="Rekorder2" Type="Self.Rekorder2" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Ovelse">
-              <PropertyRef Name="Bruger_ID" />
+            <Dependent Role="Rekorder2">
+              <PropertyRef Name="BrugerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rekorder2_Ovelser">
+          <End Role="Ovelser" Type="Self.Ovelser" Multiplicity="1" />
+          <End Role="Rekorder2" Type="Self.Rekorder2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ovelser">
+              <PropertyRef Name="OvelseId" />
+            </Principal>
+            <Dependent Role="Rekorder2">
+              <PropertyRef Name="OvelseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -162,7 +181,8 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ovelse" EntityType="Self.Ovelse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ovelser" EntityType="Self.Ovelser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rekorder2" EntityType="Self.Rekorder2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -180,9 +200,13 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ovelse_AspNetUsers" Association="Self.FK_Ovelse_AspNetUsers">
+          <AssociationSet Name="FK_Rekorder2_AspNetUsers" Association="Self.FK_Rekorder2_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Ovelse" EntitySet="Ovelse" />
+            <End Role="Rekorder2" EntitySet="Rekorder2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rekorder2_Ovelser" Association="Self.FK_Rekorder2_Ovelser">
+            <End Role="Ovelser" EntitySet="Ovelser" />
+            <End Role="Rekorder2" EntitySet="Rekorder2" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -195,6 +219,8 @@
           <EntitySet Name="AspNetUserClaims" EntityType="LauOmidEksamenModel.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="LauOmidEksamenModel.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="LauOmidEksamenModel.AspNetUser" />
+          <EntitySet Name="Ovelsers" EntityType="LauOmidEksamenModel.Ovelser" />
+          <EntitySet Name="Rekorder2" EntityType="LauOmidEksamenModel.Rekorder2" />
           <EntitySet Name="sysdiagrams" EntityType="LauOmidEksamenModel.sysdiagram" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="LauOmidEksamenModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -204,14 +230,17 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
           </AssociationSet>
+          <AssociationSet Name="FK_Rekorder2_AspNetUsers" Association="LauOmidEksamenModel.FK_Rekorder2_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Rekorder2" EntitySet="Rekorder2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rekorder2_Ovelser" Association="LauOmidEksamenModel.FK_Rekorder2_Ovelser">
+            <End Role="Ovelser" EntitySet="Ovelsers" />
+            <End Role="Rekorder2" EntitySet="Rekorder2" />
+          </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="LauOmidEksamenModel.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <EntitySet Name="Ovelses" EntityType="LauOmidEksamenModel.Ovelse" />
-          <AssociationSet Name="FK_Ovelse_AspNetUsers" Association="LauOmidEksamenModel.FK_Ovelse_AspNetUsers">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="Ovelse" EntitySet="Ovelses" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
@@ -271,8 +300,29 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="LauOmidEksamenModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="LauOmidEksamenModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="Rekorder2" Relationship="LauOmidEksamenModel.FK_Rekorder2_AspNetUsers" FromRole="AspNetUser" ToRole="Rekorder2" />
           <NavigationProperty Name="AspNetRoles" Relationship="LauOmidEksamenModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
-          <NavigationProperty Name="Ovelses" Relationship="LauOmidEksamenModel.FK_Ovelse_AspNetUsers" FromRole="AspNetUser" ToRole="Ovelse" />
+        </EntityType>
+        <EntityType Name="Ovelser">
+          <Key>
+            <PropertyRef Name="OvelseId" />
+          </Key>
+          <Property Name="OvelseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OvelseNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Billede" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rekorder2" Relationship="LauOmidEksamenModel.FK_Rekorder2_Ovelser" FromRole="Ovelser" ToRole="Rekorder2" />
+        </EntityType>
+        <EntityType Name="Rekorder2">
+          <Key>
+            <PropertyRef Name="RekordId" />
+          </Key>
+          <Property Name="RekordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OvelseId" Type="Int32" Nullable="false" />
+          <Property Name="BrugerId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="dato" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Gentagelser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="LauOmidEksamenModel.FK_Rekorder2_AspNetUsers" FromRole="Rekorder2" ToRole="AspNetUser" />
+          <NavigationProperty Name="Ovelser" Relationship="LauOmidEksamenModel.FK_Rekorder2_Ovelser" FromRole="Rekorder2" ToRole="Ovelser" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -312,33 +362,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="AspNetUserRoles">
-          <End Type="LauOmidEksamenModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-          <End Type="LauOmidEksamenModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-        </Association>
-        <EntityType Name="Ovelse">
-          <Key>
-            <PropertyRef Name="Rekord_ID" />
-          </Key>
-          <Property Name="Rekord_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OvelseNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Gentagelser" Type="Int32" Nullable="false" />
-          <Property Name="Dato" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Bruger_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Billede" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="LauOmidEksamenModel.FK_Ovelse_AspNetUsers" FromRole="Ovelse" ToRole="AspNetUser" />
-        </EntityType>
-        <Association Name="FK_Ovelse_AspNetUsers">
+        <Association Name="FK_Rekorder2_AspNetUsers">
           <End Type="LauOmidEksamenModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
-          <End Type="LauOmidEksamenModel.Ovelse" Role="Ovelse" Multiplicity="*" />
+          <End Type="LauOmidEksamenModel.Rekorder2" Role="Rekorder2" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUser">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Ovelse">
-              <PropertyRef Name="Bruger_ID" />
+            <Dependent Role="Rekorder2">
+              <PropertyRef Name="BrugerId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rekorder2_Ovelser">
+          <End Type="LauOmidEksamenModel.Ovelser" Role="Ovelser" Multiplicity="1" />
+          <End Type="LauOmidEksamenModel.Rekorder2" Role="Rekorder2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ovelser">
+              <PropertyRef Name="OvelseId" />
+            </Principal>
+            <Dependent Role="Rekorder2">
+              <PropertyRef Name="OvelseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="LauOmidEksamenModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="LauOmidEksamenModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -401,6 +451,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Ovelsers">
+            <EntityTypeMapping TypeName="LauOmidEksamenModel.Ovelser">
+              <MappingFragment StoreEntitySet="Ovelser">
+                <ScalarProperty Name="Billede" ColumnName="Billede" />
+                <ScalarProperty Name="OvelseNavn" ColumnName="OvelseNavn" />
+                <ScalarProperty Name="OvelseId" ColumnName="OvelseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rekorder2">
+            <EntityTypeMapping TypeName="LauOmidEksamenModel.Rekorder2">
+              <MappingFragment StoreEntitySet="Rekorder2">
+                <ScalarProperty Name="Gentagelser" ColumnName="Gentagelser" />
+                <ScalarProperty Name="dato" ColumnName="dato" />
+                <ScalarProperty Name="BrugerId" ColumnName="BrugerId" />
+                <ScalarProperty Name="OvelseId" ColumnName="OvelseId" />
+                <ScalarProperty Name="RekordId" ColumnName="RekordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="LauOmidEksamenModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -420,18 +490,6 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Ovelses">
-            <EntityTypeMapping TypeName="LauOmidEksamenModel.Ovelse">
-              <MappingFragment StoreEntitySet="Ovelse">
-                <ScalarProperty Name="Billede" ColumnName="Billede" />
-                <ScalarProperty Name="Bruger_ID" ColumnName="Bruger_ID" />
-                <ScalarProperty Name="Dato" ColumnName="Dato" />
-                <ScalarProperty Name="Gentagelser" ColumnName="Gentagelser" />
-                <ScalarProperty Name="OvelseNavn" ColumnName="OvelseNavn" />
-                <ScalarProperty Name="Rekord_ID" ColumnName="Rekord_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

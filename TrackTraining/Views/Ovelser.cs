@@ -12,15 +12,19 @@ namespace TrackTraining.Views
     using System;
     using System.Collections.Generic;
     
-    public partial class Ovelse
+    public partial class Ovelser
     {
-        public int Rekord_ID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Ovelser()
+        {
+            this.Rekorder2 = new HashSet<Rekorder2>();
+        }
+    
+        public int OvelseId { get; set; }
         public string OvelseNavn { get; set; }
-        public int Gentagelser { get; set; }
-        public System.DateTime Dato { get; set; }
-        public string Bruger_ID { get; set; }
         public string Billede { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rekorder2> Rekorder2 { get; set; }
     }
 }
