@@ -22,7 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
-.IndexContainer {
+/*.IndexContainer {
     display:flex;
     flex-direction:column;
     
@@ -92,7 +92,7 @@ textarea {
 }
     .btn-primary:hover {
         background-color: #005EA5;
-    }
+    }*/
 
 #User {
     height: 45px;
@@ -103,7 +103,7 @@ textarea {
 }
 
 
-#scrolly {
+/*#scrolly {
     width: 1000px;
     height: fit-content;
     overflow: scroll;
@@ -117,4 +117,4 @@ textarea {
     height: 100px;
     margin: 20px 10px;
     display: inline;
-}
+}*/

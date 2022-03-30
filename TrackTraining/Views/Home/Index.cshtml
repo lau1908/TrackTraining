@@ -4,70 +4,64 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="~/Index.css" rel="stylesheet" />
     <title>TYT</title>
 </head>
 <body>
-    <div class="IndexContainer">
-        <div class="kkkk">
-            <div id="NameSlogan">
-                <h1 class="siteName">
+    @* Sitename, slogan, billede *@
+    <section class="siteName">
+        <div class="container grid">
+            <div class="Nameslogan">
+                <h1>
                     <span class="ptName">T</span>rack
                     <br>
                     <span class="ptName">Y</span>our
                     <br>
                     <span class="ptName">T</span>raining
                 </h1>
-
-                <div class="SloganCont">
-                    <h2 id="Slogan">Where ever, when ever</h2>
-                </div>
+                <h2 class="Slogan">Where ever, when ever</h2>
                 @if (Request.IsAuthenticated)//"Hvis personen er logget ind..."
                 {
                     //knapperne vises ikke hvis brugeren er logget ind
                 }
                 else
                 {
-            <a href="@Url.Action("register", "auth")">
-                <button type="button" class="btn btn-primary me-3" style="height:70px; margin:40px 0 0px 0;">
-                    Sign up for free
-                </button>
-            </a>
+
+                    <button type="button" class="btn btn-primary me-3" style="height:50px; ">
+                        Sign up for free
+                    </button>
+
                     <div>
                         <p class="konto">Har du allerede en konto?  <span> <a href="@Url.Action("login", "auth")">Login</a></span></p>
                     </div>
                 }
+            </div>
+            <div class="graph">
+                <img src="~/Billeder/ezgif.com-gif-maker.gif" />
+            </div>
+            
+        </div>
+
+    </section>
+    @*<div class="IndexContainer">
+        <div class="kkkk">
+            <div id="NameSlogan">
+                
+
+                <div class="SloganCont">
+                    
+                </div>
+               
 
             </div>
 
 
-            <img id="RunMan" src="https://www.transparentpng.com/thumb/fitness/hxIU0n-download-fitness-png.png" />
 
 
         </div>
-        <div id='scrolly'>
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-            <img class="srlimg" src="~/Images/Capture.PNG" />
-        </div>
+        
 
        
-    </div>
+    </div>*@
 </body>
 </html>
