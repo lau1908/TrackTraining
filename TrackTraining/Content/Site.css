@@ -103,23 +103,6 @@ textarea {
     padding-left: 0;
 }
 
-
-/*#scrolly {
-    width: 1000px;
-    height: fit-content;
-    overflow: scroll;
-    overflow-y: hidden;
-    margin: 0 auto;
-    white-space: nowrap 
-}
-
-.srlimg {
-    width: 100px;
-    height: 100px;
-    margin: 20px 10px;
-    display: inline;
-}
-
 .Ovelsewrapper {
     display: flex;
     flex-direction: row;
@@ -151,4 +134,9 @@ textarea {
 
 .øvelseName{
     margin-top: 20px;
+}
+
+.line-chart{
+    height:100px;
+    width:auto;
 }
