@@ -73,6 +73,7 @@
           <Property Name="OvelseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OvelseNavn" Type="nvarchar" MaxLength="50" />
           <Property Name="Billede" Type="nvarchar" MaxLength="50" />
+          <Property Name="Primære" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Rekorder2">
           <Key>
@@ -310,6 +311,7 @@
           <Property Name="OvelseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OvelseNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Billede" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Primære" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Rekorder2" Relationship="LauOmidEksamenModel.FK_Rekorder2_Ovelser" FromRole="Ovelser" ToRole="Rekorder2" />
         </EntityType>
         <EntityType Name="Rekorder2">
@@ -454,6 +456,7 @@
           <EntitySetMapping Name="Ovelsers">
             <EntityTypeMapping TypeName="LauOmidEksamenModel.Ovelser">
               <MappingFragment StoreEntitySet="Ovelser">
+                <ScalarProperty Name="Primære" ColumnName="Primære" />
                 <ScalarProperty Name="Billede" ColumnName="Billede" />
                 <ScalarProperty Name="OvelseNavn" ColumnName="OvelseNavn" />
                 <ScalarProperty Name="OvelseId" ColumnName="OvelseId" />

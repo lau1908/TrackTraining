@@ -23,6 +23,7 @@ namespace TrackTraining.Views
         public int OvelseId { get; set; }
         public string OvelseNavn { get; set; }
         public string Billede { get; set; }
+        public string Primære { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rekorder2> Rekorder2 { get; set; }
