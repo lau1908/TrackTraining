@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<TrackTraining.DBModels.Ovelser>
+@using TrackTraining.DBModels
+@{
     ViewBag.Title = "Ovelser Page";
 }
 
@@ -14,13 +16,26 @@
 
     <div class="Ovelsewrapper">
 
-        @for (int i = 0; i < 5; i++)
+        @foreach (Ovelser o in ViewBag.Primære)
         {
-            <div class="ovelsediv" style="background-image: ;">
-                <p class="OvelseNam">Navn på øvelse </p>
-            </div>
+        <div class="ovelsediv" style="background-image: url(@o.Billede)">
+            <a href="@Url.Action(
+    "Øvelser", "Home", new RouteValueDictionary(new { ovelseId =o.OvelseId })
+    )">
+                <p class="OvelseNam">@o.OvelseNavn </p>
 
+            </a>
+            
+            
+
+        </div>
+           
         }
+
+        <script>
+
+        </script>
+
     </div>
     <h2 class="øvelseName">Andre øvelser</h2>
     <div class="Ovelsewrapper">
