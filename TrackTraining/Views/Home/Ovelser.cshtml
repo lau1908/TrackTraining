@@ -18,8 +18,8 @@
 
         @foreach (Ovelser o in ViewBag.Primære)
         {
-        <div class="ovelsediv" style="background-image: url(@o.Billede)">
-            <a href="@Url.Action(
+        <div class="ovelsediv" style="background-image: url( @o.Billede )">
+            <a class="OvelseNam" href="@Url.Action(
     "Øvelser", "Home", new RouteValueDictionary(new { ovelseId =o.OvelseId })
     )">
                 <p class="OvelseNam">@o.OvelseNavn </p>
@@ -37,7 +37,7 @@
         </script>
 
     </div>
-    <h2 class="øvelseName">Andre øvelser</h2>
+    <h2 class="AndreØvl">Andre øvelser</h2>
     <div class="Ovelsewrapper">
         @for (int i = 0; i < 8; i++)
         {
