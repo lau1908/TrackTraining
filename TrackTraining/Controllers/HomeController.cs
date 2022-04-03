@@ -4,10 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using System.Data.Entity;
+using TrackTraining.DBModels;
+
 namespace TrackTraining.Controllers
 {
     public class HomeController : Controller
     {
+        TYTEntities Database = new TYTEntities();
         [AllowAnonymous]
         public ActionResult Index()
         {
@@ -23,14 +27,21 @@ namespace TrackTraining.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            
 
             return View();
 
         }
         public ActionResult Ovelser()
         {
-            ViewBag.Message = "Your Ovelser page.";
+            ViewBag.primære = Database.Ovelsers.Where(e=>e.Primære.ToLower()=="yes").ToList();
+
+            return View();
+        }
+
+        public ActionResult Øvelser(int ovelseId)
+        {
+            ViewBag.ovelse = Database.Ovelsers.Where(e => e.OvelseId== ovelseId).ToList();
 
             return View();
         }

@@ -121,6 +121,7 @@ textarea {
     flex-grow: 1;
     background-size:cover;
     display:grid;
+    
 }
 .ovelsediv:hover .OvelseNam {
     opacity: 1;

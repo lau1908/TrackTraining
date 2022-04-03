@@ -1,0 +1,20 @@
+﻿ @model IEnumerable<TrackTraining.DBModels.Ovelser>
+    @using TrackTraining.DBModels
+    @{
+        ViewBag.Title = "Øvelser";
+    }
+
+    <h2>Øvelser</h2>
+
+    @foreach (Ovelser o in ViewBag.ovelse)
+    {
+        <div >
+         <img src="@o.Billede" />
+
+                <h1 >@o.OvelseNavn </h1>
+
+
+
+
+        </div>
+    }
