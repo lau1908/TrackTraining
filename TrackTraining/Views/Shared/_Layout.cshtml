@@ -76,16 +76,15 @@
                 else
                 {
                     <div class="d-flex align-items-center">
-                        <a href="@Url.Action("login", "auth")">
-                            <button type="button" class="btn btn-link px-3 me-2">
+                        
+                            <button type="button" onclick="location.href='@Url.Action("login", "Auth")'" class="btn btn-link px-3 me-2">
                                 Login
                             </button>
-                        </a>
-                        <a href="@Url.Action("register", "auth")">
-                            <button type="button" class="btn btn-primary me-3">
+                        
+                            <button type="button"           onclick="location.href='@Url.Action("register", "Auth")'" class="btn              btn-primary me-3">
                                 Sign up for free
                             </button>
-                        </a>
+                      
 
                     </div>
                 }

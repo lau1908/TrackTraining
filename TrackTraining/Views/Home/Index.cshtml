@@ -2,7 +2,9 @@
     ViewBag.Title = "Home Page";
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link href="~/Index.css" rel="stylesheet" />
     <title>TYT</title>
@@ -27,7 +29,7 @@
                 else
                 {
 
-                    <button type="button" class="btn btn-primary me-3" style="height:50px; ">
+                    <button type="button" onclick="location.href='@Url.Action("register", "Auth")'" class="btn btn-primary me-3" style="height:50px; ">
                         Sign up for free
                     </button>
 
