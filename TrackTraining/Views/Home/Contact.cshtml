@@ -1,10 +1,13 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Contact";
 }
 
 <div id="progressCont">
     <div id="line-chart"></div>
     <div>
+        <br />
+        <br />
         <h2>Ny personlig rekord?</h2>
         <label for="RepDato">Dato:</label><br />
         <input placeholder="YYYY.MM.DD" type="text" id="RepDato" name="RepDato"><br />
@@ -67,9 +70,11 @@
     // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
     // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
     document.querySelector('#update-line-chart').addEventListener('click', () => {
-        const unixDate = Math.floor(new Date($("input[name='RepDato']").val()).getTime() / 1000)//skaffer unix-timestamp ud fra input
-        console.log(unixDate);
-        var diffUnix = unixdate - @
+
+        var unixDate = Math.floor(new Date($("input[name='RepDato']").val()).getTime() / 1000)//skaffer unix-timestamp ud fra input
+        // console.log(unixDate);
+        var Gentagelser = $("input[name='MaxReps']").val()
+        // console.log(Gentagelser);
 
         lineChart.data = [
             ['Time', 'Gentagelser'],

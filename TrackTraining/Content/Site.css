@@ -138,7 +138,13 @@ textarea {
     margin-top: 20px;
 }
 
-.line-chart{
-    height:100px;
-    width:auto;
+
+#progressCont {
+    display: flex;
+    flex-direction: row;
+    margin-left: -100px;
+    margin-top:-20px;
+}
+#update-line-chart{
+    margin-top:10px;
 }
