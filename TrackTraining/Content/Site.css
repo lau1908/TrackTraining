@@ -113,16 +113,15 @@ textarea {
 }
 
 
-.ovelsediv {
-    background-color: #dadada;
-    height: 200px;
-    background-position: center;
-    width: 200px;
-    min-width: 200px;
+.ovelsediv{
+    background-color:black;
+    height:200px;
+    width:200px;
+    min-width:200px;
     flex-grow: 1;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: grid;
+    background-size:cover;
+    display:grid;
+    
 }
 .ovelsediv:hover .OvelseNam {
     opacity: 1;
