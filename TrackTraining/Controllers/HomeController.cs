@@ -25,10 +25,15 @@ namespace TrackTraining.Controllers
 
             return View();
         }
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Contact(DateTime date, int Gentagelser)
         {
-            string uid = User.Identity.GetUserId();
+            string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
 
             AspNetUser bruger = Database.AspNetUsers.FirstOrDefault(e => e.Id == uid);
             Rekorder2 ovl = Database.Rekorder2.FirstOrDefault(i => i.BrugerId == uid);
@@ -40,9 +45,9 @@ namespace TrackTraining.Controllers
                 Gentagelser = Gentagelser,  
                 dato = date,
             };
-            Database.Rekorder2.Add(Rekord);
-            Database.SaveChanges();
-            return View(); 
+            Database.Rekorder2.Add(Rekord);//tilføjer den nye data 
+            Database.SaveChanges();//gemmer ændringer 
+            return Json(Rekord); 
             
         }
 

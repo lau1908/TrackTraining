@@ -1,4 +1,4 @@
-﻿
+﻿@model TrackTraining.DBModels.Rekorder2
 @{
     ViewBag.Title = "Contact";
 }
@@ -11,8 +11,9 @@
         <h2>Ny personlig rekord?</h2>
 
         <label for="RepDato">Dato:</label><br />
+
         <input placeholder="YYYY.MM.DD" type="text" id="RepDato" name="RepDato"><br />
-                                                                                                                                                                    
+
         <label for="MaxReps">Gentagelser:</label> <br />
         <input type="text" id="MaxReps" name="MaxReps">
 
@@ -22,8 +23,11 @@
 
 
 
-
 </div>
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+{
+    @Html.TextBoxFor(m => m.Gentagelser)
+}
 
 <!-- https://developers.google.com/chart/interactive/docs/quick_start -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -48,7 +52,6 @@
         }
     };
 
-
     const init = () => {
 
         lineChart.chart = new google.visualization.LineChart(
@@ -67,13 +70,13 @@
     });
 
 
-    safeRecord
+
     document.querySelector('#safeRecord').addEventListener('click', () => {
-       // var unixDate = Math.floor(new Date($("input[name='RepDato']").val()).getTime() / 1000)//skaffer unix-timestamp ud fra input
+        // var unixDate = Math.floor(new Date($("input[name='RepDato']").val()).getTime() / 1000)//skaffer unix-timestamp ud fra input
         // console.log(unixDate);
         var Gentagelser = $("input[name='MaxReps']").val()
         var date = $("input[name='RepDato']").val()
-        return (Gentagelser, date);
+        //return (Gentagelser, date);
     }
 
     /*document.querySelector('#update-line-chart').addEventListener('click', () => {
@@ -93,6 +96,6 @@
             lineChart.options
         );
     });*/
-        
+
 
 </script>
