@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using TrackTraining.DBModels;
+
 
 namespace TrackTraining.Controllers
 {
@@ -24,15 +25,30 @@ namespace TrackTraining.Controllers
 
             return View();
         }
-
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Contact(DateTime date, int Gentagelser)
         {
+            string uid = User.Identity.GetUserId();
+
+            AspNetUser bruger = Database.AspNetUsers.FirstOrDefault(e => e.Id == uid);
+            Rekorder2 ovl = Database.Rekorder2.FirstOrDefault(i => i.BrugerId == uid);
+
+            Rekorder2 Rekord = new Rekorder2()//opretter objektet Rekord 
+            {
+                BrugerId = bruger.Id, //tildeler objektet Rekord 4 vaiabler
+                OvelseId = ovl.OvelseId,
+                Gentagelser = Gentagelser,  
+                dato = date,
+            };
+            Database.Rekorder2.Add(Rekord);
+            Database.SaveChanges();
+            return View(); 
             
-
-            return View();
-
         }
-        public ActionResult Ovelser()
+
+
+
+            public ActionResult Ovelser()
         {
             ViewBag.primære = Database.Ovelsers.Where(e=>e.Primære.ToLower()=="yes").ToList();
 

@@ -31,7 +31,7 @@ namespace TrackTraining.DBModels
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Ovelser> Ovelsers { get; set; }
-        public virtual DbSet<Rekorder2> Rekorder2 { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Rekorder2> Rekorder2 { get; set; }
     }
 }

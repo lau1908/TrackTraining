@@ -4,17 +4,16 @@
         ViewBag.Title = "Øvelser";
     }
 
-    <h2>Øvelser</h2>
-
     @foreach (Ovelser o in ViewBag.ovelse)
     {
-        <div >
-         <img src="@o.Billede" />
+<div>
+    <h1>@o.OvelseNavn </h1>
 
-                <h1 >@o.OvelseNavn </h1>
-
-
+    <img  style="max-height:450px;" src="@o.Billede" />
 
 
-        </div>
+
+
+
+</div>
     }

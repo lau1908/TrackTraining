@@ -18,7 +18,7 @@ namespace TrackTraining.DBModels
         public int OvelseId { get; set; }
         public string BrugerId { get; set; }
         public System.DateTime dato { get; set; }
-        public string Gentagelser { get; set; }
+        public int Gentagelser { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Ovelser Ovelser { get; set; }

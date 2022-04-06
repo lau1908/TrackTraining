@@ -9,11 +9,14 @@
         <br />
         <br />
         <h2>Ny personlig rekord?</h2>
+
         <label for="RepDato">Dato:</label><br />
         <input placeholder="YYYY.MM.DD" type="text" id="RepDato" name="RepDato"><br />
+                                                                                                                                                                    
         <label for="MaxReps">Gentagelser:</label> <br />
         <input type="text" id="MaxReps" name="MaxReps">
-        <button id="update-line-chart">Update Data</button>
+
+        <button id="safeRecord">Update Data</button>
 
     </div>
 
@@ -45,11 +48,7 @@
         }
     };
 
-    // https://developers.google.com/chart/interactive/docs/gallery/piechart
-    // https://developers.google.com/chart/interactive/docs/gallery/barchart
-    // https://developers.google.com/chart/interactive/docs/gallery/linechart
-    // https://developers.google.com/chart/interactive/docs/reference#draw
-    // https://developers.google.com/chart/interactive/docs/reference#arraytodatatable
+
     const init = () => {
 
         lineChart.chart = new google.visualization.LineChart(
@@ -61,20 +60,25 @@
         );
     };
 
-    // https://developers.google.com/chart/interactive/docs/quick_start
+
     google.charts.load('current', {
         packages: ['corechart'],
         callback: init
     });
 
-    // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
-    // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-    document.querySelector('#update-line-chart').addEventListener('click', () => {
 
-        var unixDate = Math.floor(new Date($("input[name='RepDato']").val()).getTime() / 1000)//skaffer unix-timestamp ud fra input
+    safeRecord
+    document.querySelector('#safeRecord').addEventListener('click', () => {
+       // var unixDate = Math.floor(new Date($("input[name='RepDato']").val()).getTime() / 1000)//skaffer unix-timestamp ud fra input
         // console.log(unixDate);
         var Gentagelser = $("input[name='MaxReps']").val()
-        // console.log(Gentagelser);
+        var date = $("input[name='RepDato']").val()
+        return (Gentagelser, date);
+    }
+
+    /*document.querySelector('#update-line-chart').addEventListener('click', () => {
+
+
 
         lineChart.data = [
             ['Time', 'Gentagelser'],
@@ -88,6 +92,7 @@
             google.visualization.arrayToDataTable(lineChart.data),
             lineChart.options
         );
-    });
+    });*/
+        
 
 </script>
