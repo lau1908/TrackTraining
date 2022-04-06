@@ -33,6 +33,8 @@ namespace TrackTraining.Controllers
         [HttpPost]
         public ActionResult Contact(DateTime date, int Gentagelser)
         {
+            
+            
             string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
 
             AspNetUser bruger = Database.AspNetUsers.FirstOrDefault(e => e.Id == uid);
@@ -41,7 +43,7 @@ namespace TrackTraining.Controllers
             Rekorder2 Rekord = new Rekorder2()//opretter objektet Rekord 
             {
                 BrugerId = bruger.Id, //tildeler objektet Rekord 4 vaiabler
-                OvelseId = ovl.OvelseId,
+                OvelseId = 4,
                 Gentagelser = Gentagelser,  
                 dato = date,
             };
@@ -55,7 +57,7 @@ namespace TrackTraining.Controllers
 
             public ActionResult Ovelser()
         {
-            ViewBag.primære = Database.Ovelsers.Where(e=>e.Primære.ToLower()=="yes").ToList();
+            ViewBag.primære = Database.Ovelsers.Where(e=>e.Primære.ToLower()!= "null").ToList();
 
             return View();
         }
