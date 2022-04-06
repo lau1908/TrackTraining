@@ -11,13 +11,13 @@
         <EntityTypeShape EntityType="LauOmidEksamenModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="9.375" />
         <EntityTypeShape EntityType="LauOmidEksamenModel.AspNetUser" Width="1.5" PointX="3" PointY="3.75" />
         <EntityTypeShape EntityType="LauOmidEksamenModel.Ovelser" Width="1.5" PointX="6" PointY="0.75" />
-        <EntityTypeShape EntityType="LauOmidEksamenModel.Rekorder2" Width="1.5" PointX="8.25" PointY="4.75" />
         <EntityTypeShape EntityType="LauOmidEksamenModel.sysdiagram" Width="1.5" PointX="8.75" PointY="1.5" />
         <AssociationConnector Association="LauOmidEksamenModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="LauOmidEksamenModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LauOmidEksamenModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="LauOmidEksamenModel.Rekorder2" Width="1.5" PointX="8.25" PointY="5.125" />
         <AssociationConnector Association="LauOmidEksamenModel.FK_Rekorder2_AspNetUsers" />
         <AssociationConnector Association="LauOmidEksamenModel.FK_Rekorder2_Ovelser" />
-        <AssociationConnector Association="LauOmidEksamenModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
