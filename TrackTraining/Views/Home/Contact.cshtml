@@ -38,12 +38,6 @@
                     Gentagelser: Gentagelser, date: Dato
                 } ,
 
-                    success: function () {
-
-                        alert(Gentagelser + Dato);
-
-                    }
-
                 });
         })
 
@@ -51,13 +45,10 @@
 
 
 </div>
-<!--@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
-{
-    @Html.TextBoxFor(m => m.Gentagelser)
-}-->
 
- @*https://developers.google.com/chart/interactive/docs/quick_start*@ 
-<!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+ https://developers.google.com/chart/interactive/docs/quick_start 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     const lineChart = {
         chart: null,
@@ -99,14 +90,14 @@
 
 
     document.querySelector('#safeRecord').addEventListener('click', () => {
-        // var unixDate = Math.floor(new Date($("input[name='RepDato']").val()).getTime() / 1000)//skaffer unix-timestamp ud fra input
-        // console.log(unixDate);
+         var unixDate = Math.floor(new Date($("input[name='RepDato']").val()).getTime() / 1000)//skaffer unix-timestamp ud fra input
+         console.log(unixDate);
         var Gentagelser = $("input[name='MaxReps']").val()
         var date = $("input[name='RepDato']").val()
-        //return (Gentagelser, date);
+        return (Gentagelser, date);
     });
 
-    /*document.querySelector('#update-line-chart').addEventListener('click', () => {
+    document.querySelector('#update-line-chart').addEventListener('click', () => {
 
 
 
@@ -122,7 +113,7 @@
             google.visualization.arrayToDataTable(lineChart.data),
             lineChart.options
         );
-    });*/
+    });
 
 
-</script>-->
+</script>
