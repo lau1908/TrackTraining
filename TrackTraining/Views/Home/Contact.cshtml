@@ -54,7 +54,7 @@
 </div>
 
 
- @*https://developers.google.com/chart/interactive/docs/quick_start
+ https://developers.google.com/chart/interactive/docs/quick_start
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     const lineChart = {
@@ -97,9 +97,9 @@
 
 
     document.querySelector('#safeRecord').addEventListener('click', () => {
-
-        var unixDate = Math.floor(new Date(@ViewBag.FørsteRep).getTime() / 1000)//skaffer unix-timestamp ud fra input
-        console.log(@ViewBag.FørsteRep);
+        
+        var unixDate = Math.floor(new Date().getTime() / 1000)//skaffer unix-timestamp ud fra input
+        console.log(unixDate)
         //var Gentagelser = $("input[name='MaxReps']").val()
         //var date = $("input[name='RepDato']").val()
         //return (Gentagelser, date);
@@ -124,4 +124,4 @@
     });
 
 
-<!--</script>-->*@
+<!--</script>-->
