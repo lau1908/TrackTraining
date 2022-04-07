@@ -1,4 +1,7 @@
-﻿@model TrackTraining.DBModels.Rekorder2
+﻿@model IEnumerable<TrackTraining.DBModels.Rekorder2>
+@using TrackTraining.DBModels
+
+@*@model TrackTraining.DBModels.Rekorder2*@
 @{
     ViewBag.Title = "Contact";
 }
@@ -17,9 +20,9 @@
         <input placeholder="YYYY.MM.DD" type="text" id="RepDato" name="RepDato"><br />
 
         <label for="MaxReps">Gentagelser:</label> <br />
-        <input  type="text" id="MaxReps" name="MaxReps">
+        <input type="text" id="MaxReps" name="MaxReps">
 
-        <button  id="safeRecord">Update Data</button>
+        <button id="safeRecord">Update Data</button>
 
     </div>
     <script>
@@ -28,17 +31,21 @@
         $('#safeRecord').click(function () {
             var Gentagelser = $('#MaxReps').val();
             var Dato = $('#RepDato').val();
-            
-            $.ajax({
+            console.log("@ViewBag.FørsteRep");
+            if (Gentagelser && Dato !=" ") {
+                $.ajax({
 
-                type: "POST",
-                dataType: "JSON",
-                url: "/Home/Contact",
-                data: {
-                    Gentagelser: Gentagelser, date: Dato
-                } ,
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "/Home/Contact",
+                    data: {
+
+                        Gentagelser: Gentagelser, date: Dato
+                    },
 
                 });
+            }
+           
         })
 
     </script>
@@ -47,7 +54,7 @@
 </div>
 
 
- https://developers.google.com/chart/interactive/docs/quick_start 
+ @*https://developers.google.com/chart/interactive/docs/quick_start
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     const lineChart = {
@@ -90,11 +97,12 @@
 
 
     document.querySelector('#safeRecord').addEventListener('click', () => {
-         var unixDate = Math.floor(new Date($("input[name='RepDato']").val()).getTime() / 1000)//skaffer unix-timestamp ud fra input
-         console.log(unixDate);
-        var Gentagelser = $("input[name='MaxReps']").val()
-        var date = $("input[name='RepDato']").val()
-        return (Gentagelser, date);
+
+        var unixDate = Math.floor(new Date(@ViewBag.FørsteRep).getTime() / 1000)//skaffer unix-timestamp ud fra input
+        console.log(@ViewBag.FørsteRep);
+        //var Gentagelser = $("input[name='MaxReps']").val()
+        //var date = $("input[name='RepDato']").val()
+        //return (Gentagelser, date);
     });
 
     document.querySelector('#update-line-chart').addEventListener('click', () => {
@@ -116,4 +124,4 @@
     });
 
 
-</script>
+<!--</script>-->*@

@@ -27,16 +27,24 @@ namespace TrackTraining.Controllers
         }
         public ActionResult Contact()
         {
+            string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
+            List<Rekorder2> første = new List<Rekorder2>();
+            første = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 4 && e.BrugerId == uid).ToList();
+          
+
+            var kk = første[0].dato.ToShortDateString();
+            ViewBag.FørsteRep = kk;
+
             return View();
         }
 
+       
         [HttpPost]
         public ActionResult Contact(DateTime date, int Gentagelser)
         {
-            
-            
             string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
 
+            
             AspNetUser bruger = Database.AspNetUsers.FirstOrDefault(e => e.Id == uid);
             Rekorder2 ovl = Database.Rekorder2.FirstOrDefault(i => i.BrugerId == uid);
 
