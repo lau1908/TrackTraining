@@ -33,7 +33,7 @@ namespace TrackTraining.Controllers
           
 
             var kk = første[0].dato.ToShortDateString();
-            var km
+
             ViewBag.FørsteRep = kk;
 
             return View();
