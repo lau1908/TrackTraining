@@ -22,6 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+input {
+    border: 0;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding:3px;
+
+}
+
 /*.IndexContainer {
     display:flex;
     flex-direction:column;
@@ -147,4 +155,21 @@ textarea {
 }
 .body-content{
     height:100%;
+}
+
+.rekoInput {
+    background-color: #f8f9fa;
+    padding:10px 10px 0 10px;
+    border-radius: 5px;
+    width: max-content;
+    margin-bottom:5px;
+
+}
+#safeRecord {
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    height: 40px;
+    width:100px;
+    border-width: 1px;
+    border-color: gray;
 }

@@ -13,16 +13,18 @@
     <div>
         <br />
         <br />
-        <h2>Ny personlig rekord?</h2>
+        <h3>Ny personlig rekord?</h3>
+        <div class="rekoInput">
+            <label for="RepDato">Dato</label><br />
 
-        <label for="RepDato">Dato:</label><br />
-
-        <input placeholder="YYYY.MM.DD" type="text" id="RepDato" name="RepDato"><br />
-
-        <label for="MaxReps">Gentagelser:</label> <br />
-        <input type="text" id="MaxReps" name="MaxReps">
-
-        <button id="safeRecord">Update Data</button>
+            <input placeholder="YYYY.MM.DD" type="text" id="RepDato" name="RepDato">
+        </div>
+        <div class="rekoInput">
+            <label for="MaxReps">Gentagelser</label> <br />
+            <input type="text" id="MaxReps" name="MaxReps">
+        </div>
+       
+        <button id="safeRecord">Gem</button>
 
     </div>
     <script>
@@ -31,7 +33,7 @@
         $('#safeRecord').click(function () {
             var Gentagelser = $('#MaxReps').val();
             var Dato = $('#RepDato').val();
-            console.log("@ViewBag.FørsteRep");
+
             if (Gentagelser && Dato !=" ") {
                 $.ajax({
 
@@ -70,7 +72,7 @@
         element: '#line-chart',
         options: {
             title: 'Armbøjninger',
-            width: 1000,
+            width: 900,
             height: 500,
             // curveType: 'function' //blødgør kurven
 
@@ -97,7 +99,8 @@
 
 
     document.querySelector('#safeRecord').addEventListener('click', () => {
-        
+                    console.log("@ViewBag.FørsteRep");
+
         var unixDate = Math.floor(new Date().getTime() / 1000)//skaffer unix-timestamp ud fra input
         console.log(unixDate)
         //var Gentagelser = $("input[name='MaxReps']").val()
