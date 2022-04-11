@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<TrackTraining.DBModels.Rekorder2>
-@using TrackTraining.DBModels
 
-@*@model TrackTraining.DBModels.Rekorder2*@
 @{
     ViewBag.Title = "Contact";
 }
@@ -17,20 +15,23 @@
         <div class="rekoInput">
             <label for="RepDato">Dato</label><br />
 
-            <input placeholder="YYYY.MM.DD" type="text" id="RepDato" name="RepDato">
+            <input placeholder="YYYY-MM-DD" type="text" id="RepDato" name="RepDato">
         </div>
         <div class="rekoInput">
             <label for="MaxReps">Gentagelser</label> <br />
             <input type="text" id="MaxReps" name="MaxReps">
         </div>
        
-        <button id="safeRecord">Gem</button>
+        <div style="display:flex; flex-direction:row; ">
+            <button id="saveRecord">Gem</button>
+            <p id="Psaved">Rekorden er gemt!</p>
+        </div>
 
     </div>
     <script>
 
 
-        $('#safeRecord').click(function () {
+        $('#saveRecord').click(function () {
             var Gentagelser = $('#MaxReps').val();
             var Dato = $('#RepDato').val();
 
@@ -47,8 +48,11 @@
 
                 });
             }
-           
+            $("#Psaved").show()
+
         })
+
+
 
     </script>
 
@@ -56,25 +60,31 @@
 </div>
 
 
- https://developers.google.com/chart/interactive/docs/quick_start
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     const lineChart = {
         chart: null,
         data: [
-            ['Time', 'Gentagelser'],
-            ['2015', 5752],
-            ['2016', 5621],
-            ['2017', 5876],
-            ['2018', 6585],
-            ['2019', 6100]
+        ['Time', 'Gentagelser'],
+        @if (Model.Count() > 0)//hvis der er data i databasen køres koden
+        {
+            var firstDate = Model.First().dato;
+            foreach (var rekord in Model)
+            {
+                var dage = (rekord.dato - firstDate).TotalDays.ToString();//finder forholdet mellem den sidste dato og den første dato
+                <text>
+                 [@dage, @rekord.Gentagelser],//plotter Gentagelser ift. dage på grafen
+                </text>
+            }
+        }
         ],
         element: '#line-chart',
         options: {
             title: 'Armbøjninger',
             width: 900,
             height: 500,
-            // curveType: 'function' //blødgør kurven
+            curveType: 'function' //blødgør kurven
 
         }
     };
@@ -89,8 +99,6 @@
             lineChart.options
         );
     };
-
-
     google.charts.load('current', {
         packages: ['corechart'],
         callback: init
@@ -98,33 +106,6 @@
 
 
 
-    document.querySelector('#safeRecord').addEventListener('click', () => {
-                    console.log("@ViewBag.FørsteRep");
-
-        var unixDate = Math.floor(new Date().getTime() / 1000)//skaffer unix-timestamp ud fra input
-        console.log(unixDate)
-        //var Gentagelser = $("input[name='MaxReps']").val()
-        //var date = $("input[name='RepDato']").val()
-        //return (Gentagelser, date);
-    });
-
-    document.querySelector('#update-line-chart').addEventListener('click', () => {
-
-
-
-        lineChart.data = [
-            ['Time', 'Gentagelser'],
-            ['2015', 9],
-            ['2016', 99],
-            ['2017', 999],
-            ['2018', 9999],
-            ['2019', 99999]
-        ];
-        lineChart.chart.draw(
-            google.visualization.arrayToDataTable(lineChart.data),
-            lineChart.options
-        );
-    });
 
 
 </script>

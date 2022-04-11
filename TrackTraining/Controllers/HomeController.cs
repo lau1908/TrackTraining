@@ -28,15 +28,9 @@ namespace TrackTraining.Controllers
         public ActionResult Contact()
         {
             string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
-            List<Rekorder2> første = new List<Rekorder2>();
-            første = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 4 && e.BrugerId == uid).ToList();
+            IEnumerable<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 4 && e.BrugerId == uid).AsEnumerable();
           
-
-            var kk = første[0].dato.ToShortDateString();
-
-            ViewBag.FørsteRep = kk;
-
-            return View();
+            return View(rekorder);
         }
 
        

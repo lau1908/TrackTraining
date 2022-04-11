@@ -165,11 +165,16 @@ input {
     margin-bottom:5px;
 
 }
-#safeRecord {
+#saveRecord {
     border-radius: 5px;
     background-color: #f8f9fa;
     height: 40px;
     width:100px;
     border-width: 1px;
     border-color: gray;
+}
+#Psaved {
+    margin-top: 6px;
+    margin-left: 3px;
+    display: none;
 }
