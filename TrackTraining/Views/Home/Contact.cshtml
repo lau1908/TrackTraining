@@ -32,24 +32,26 @@
 
 
         $('#saveRecord').click(function () {
-            var Gentagelser = $('#MaxReps').val();
-            var Dato = $('#RepDato').val();
+            var Gentagelser = $('#MaxReps').val();//tildeler variablen Gentagelser gentagelserne som brugeren har skrevet
+            var Dato = $('#RepDato').val(); //tildeler variablen Dato datoen som brugeren har skrevet
 
-            if (Gentagelser && Dato !=" ") {
-                $.ajax({
+            if (Gentagelser && Dato !=" ") {//hvis hverken variablen Gentagelser eller Dato er = NULL køres koden
+                $.ajax({//benytter ajax-metode til at få dataen ind til HomeControllern 
 
-                    type: "POST",
-                    dataType: "JSON",
-                    url: "/Home/Contact",
+                    type: "POST",//erklærer typen
+                    dataType: "JSON",//erklærer datatypen
+                    url: "/Home/Contact",//erklærer URL
                     data: {
 
-                        Gentagelser: Gentagelser, date: Dato
+                        Gentagelser: Gentagelser, date: Dato//sætter de nyerklæret variabler lig med variablerne fra HomeControllern
                     },
 
                 });
             }
-            $("#Psaved").show()
 
+            $("#Psaved").show()//kontrolbesked vises til brugeren for at vise at dataen er gemt
+            $('#MaxReps').val('');
+            $('#RepDato').val('');
         })
 
 
@@ -70,9 +72,9 @@
         @if (Model.Count() > 0)//hvis der er data i databasen køres koden
         {
             var firstDate = Model.First().dato;
-            foreach (var rekord in Model)
+            foreach (var rekord in Model)//for hver row(rekord) i databasen køres koden
             {
-                var dage = (rekord.dato - firstDate).TotalDays.ToString();//finder forholdet mellem den sidste dato og den første dato
+                var dage = (rekord.dato - firstDate).TotalDays.ToString();//finder forholdet mellem den datoen og den første dato(firstDate)
                 <text>
                  [@dage, @rekord.Gentagelser],//plotter Gentagelser ift. dage på grafen
                 </text>
@@ -103,9 +105,5 @@
         packages: ['corechart'],
         callback: init
     });
-
-
-
-
 
 </script>

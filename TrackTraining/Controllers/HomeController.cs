@@ -29,13 +29,12 @@ namespace TrackTraining.Controllers
         {
             string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
             IEnumerable<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 4 && e.BrugerId == uid).AsEnumerable();
-          
-            return View(rekorder);
+            return View(rekorder);//retunerer rekorder som outputargument 
         }
 
        
         [HttpPost]
-        public ActionResult Contact(DateTime date, int Gentagelser)
+        public ActionResult Contact(DateTime date, int Gentagelser)//bruger date og gentagelser som inputargument
         {
             string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
 
