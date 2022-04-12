@@ -45,7 +45,7 @@ namespace TrackTraining.Controllers
             Rekorder2 Rekord = new Rekorder2()//opretter objektet Rekord 
             {
                 BrugerId = bruger.Id, //tildeler objektet Rekord 4 vaiabler
-                OvelseId = 4,
+                OvelseId = ovl.OvelseId,
                 Gentagelser = Gentagelser,  
                 dato = date,
             };

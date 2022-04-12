@@ -76,7 +76,8 @@
             {
                 var dage = (rekord.dato - firstDate).TotalDays.ToString();//finder forholdet mellem den datoen og den første dato(firstDate)
                 <text>
-                 [@dage, @rekord.Gentagelser],//plotter Gentagelser ift. dage på grafen
+            [@dage, @rekord.Gentagelser],//plotter Gentagelser ift. dage på grafen
+
                 </text>
             }
         }
@@ -84,10 +85,10 @@
         element: '#line-chart',
         options: {
             title: 'Armbøjninger',
-            width: 900,
-            height: 500,
-            curveType: 'function' //blødgør kurven
 
+        width: 900,
+            height: 500,
+            curveType: 'function', //blødgør kurven
         }
     };
 
