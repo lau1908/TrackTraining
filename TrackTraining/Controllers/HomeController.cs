@@ -21,9 +21,9 @@ namespace TrackTraining.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
+            IEnumerable<Rekorder2> Leaders = Database.Rekorder2.OrderByDescending(e => e.Gentagelser);
+            return View(Leaders);
         }
         public ActionResult Contact()
         {
@@ -67,6 +67,7 @@ namespace TrackTraining.Controllers
         public ActionResult Øvelser(int ovelseId)
         {
             ViewBag.ovelse = Database.Ovelsers.Where(e => e.OvelseId== ovelseId).ToList();
+
 
             return View();
         }
