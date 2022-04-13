@@ -1,33 +1,35 @@
-﻿@model IEnumerable<TrackTraining.DBModels.Rekorder2>
+﻿
+@model IEnumerable<TrackTraining.DBModels.Rekorder2>
+
 
 @{
     ViewBag.Title = "About";
 }
+
 <h2>Leaderboards</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <tr >
+            <th>Plads</th>
+            <th>Bruger</th>
+            <th>Øvelse</th>
+            <th>Gentagelser</th>
+            <th>Dato</th>
 
-<table style="width:100%">
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="Leadreko">
+                <td id="number">1</td>
+                <td>@item.AspNetUser.UserName</td>
+                <td>@item.Ovelser.OvelseNavn</td>
+                <td>@item.Gentagelser</td>
+                <td>@item.dato.ToShortDateString()</td>
 
-    <tr>
-        <th>Bruger</th>
-        <th>Øvelse</th>
-        <th>Gentagelser</th>
-        <th>Dato</th>
-
-    </tr>
-    @foreach (var item in Model)
-    {
-
-<tr>
-
-    <td> @item.BrugerId</td>
-    <td>@item.OvelseId</td>
-    <td>@item.Gentagelser</td>
-    <td>@item.dato.ToShortDateString()</td>
-
-
-</tr>
-
-    }
+            </tr>
+        }
 
 
-</table>
+    </table>
+</div>
+

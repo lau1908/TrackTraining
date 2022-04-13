@@ -178,3 +178,29 @@ input {
     margin-left: 3px;
     display: none;
 }
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    background-color: #F5F5F5;
+}
+
+
+th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 300;
+    font-size: 16px;
+    color: black;
+    border-bottom: solid 2px #fff;
+}
