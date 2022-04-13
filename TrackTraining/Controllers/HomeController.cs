@@ -21,9 +21,9 @@ namespace TrackTraining.Controllers
 
         public ActionResult About()
         {
+            ViewBag.Message = "Your application description page.";
 
-            IEnumerable<Rekorder2> Leaders = Database.Rekorder2.OrderByDescending(e => e.Gentagelser);
-            return View(Leaders);
+            return View();
         }
         public ActionResult Contact()
         {
@@ -66,10 +66,33 @@ namespace TrackTraining.Controllers
 
         public ActionResult Øvelser(int ovelseId)
         {
-            ViewBag.ovelse = Database.Ovelsers.Where(e => e.OvelseId== ovelseId).ToList();
+            string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
+            List<OvelseRekorder2> OvelseRekorder2 = new List<OvelseRekorder2>();
+            List<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == ovelseId && e.BrugerId == uid).ToList();
+            OvelseRekorder2 = rekorder.Select(x => new DBModels.OvelseRekorder2
+            {
+                Billede = x.Ovelser.Billede,
+                OvelseId = x.OvelseId,
+                OvelseNavn = x.Ovelser.OvelseNavn,
+                dato= x.dato,
+                gentagelser= x.Gentagelser
 
-
-            return View();
+            }).ToList();
+            //{
+            //    Ovelsers = Database.Ovelsers.Where(e => e.OvelseId == ovelseId).ToList(),
+            //    Rekorder2 = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 4 && e.BrugerId == uid).ToList()
+            //};
+            //List<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == ovelseId && e.BrugerId == uid).ToList();
+            //List<Ovelser> ovelsers= Database.Ovelsers.Where(e => e.OvelseId == ovelseId).ToList();
+            //var øvelser = from r in rekorder
+            //              join o in ovelsers on r.OvelseId equals o.OvelseId into table1
+            //              from o in table1.ToList()
+            //              select new OvelseRekorder2
+            //              {
+            //                    ovelsers= o,
+            //                    rekorder2= r,
+            //              };
+            return View(OvelseRekorder2);
         }
     }
 }
