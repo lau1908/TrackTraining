@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TrackTraining.DBModels.OvelseRekorder2>
+﻿@model TrackTraining.Models.ExerciseData
 
 @{
     ViewBag.Title = "Øvelser";
@@ -6,18 +6,13 @@
 }
 
 
-@foreach (var Ovelsers in Model)
-{
-    <div>
-        <h1>@Ovelsers.OvelseNavn</h1>
+<h1>@Model.name</h1>
 
-        <img style="max-height:450px;" src=" " />
+<div>
 
+    <img style="max-height:450px;" src=" " />
 
-
-
-    </div>
-}
+</div>
 <div id="progressCont">
     <div id="line-chart"></div>
     <div>
@@ -41,21 +36,24 @@
 
     </div>
     <script>
-
+        var OvlID =
+            console.log(OvlID);
 
         $('#saveRecord').click(function () {
             var Gentagelser = $('#MaxReps').val();//tildeler variablen Gentagelser gentagelserne som brugeren har skrevet
             var Dato = $('#RepDato').val(); //tildeler variablen Dato datoen som brugeren har skrevet
 
-            if (Gentagelser && Dato !=" ") {//hvis hverken variablen Gentagelser eller Dato er = NULL køres koden
+
+            if (Gentagelser && Dato != " ") {//hvis hverken variablen Gentagelser eller Dato er = NULL køres koden
                 $.ajax({//benytter ajax-metode til at få dataen ind til HomeControllern
 
                     type: "POST",//erklærer typen
                     dataType: "JSON",//erklærer datatypen
                     url: "/Home/Contact",//erklærer URL
                     data: {
-
-                        Gentagelser: Gentagelser, date: Dato//sætter de nyerklæret variabler lig med variablerne fra HomeControllern
+                        Gentagelser: Gentagelser,
+                        date: Dato,      //er de nyerklæret variabler lig med variablerne fra HomeControllern
+                        Id: @Model.id,
                     },
 
                 });
@@ -64,6 +62,7 @@
             $("#Psaved").show()//kontrolbesked vises til brugeren for at vise at dataen er gemt
             $('#MaxReps').val('');
             $('#RepDato').val('');
+
         })
 
 
@@ -81,14 +80,14 @@
         chart: null,
         data: [
         ['Time', 'Gentagelser'],
-        @if (Model.Count() > 0)//hvis der er data i databasen køres koden
+        @if (Model.data.Count() > 0)//hvis der er data i databasen køres koden
         {
-            var firstDate = Model.First().dato;
-            foreach (var rekord in Model)//for hver row(rekord) i databasen køres koden
+            var firstDate = Model.data.First().dato;
+            foreach (var rekord in Model.data)//for hver row(rekord) i databasen køres koden
             {
                 var dage = (rekord.dato - firstDate).TotalDays.ToString();//finder forholdet mellem den datoen og den første dato(firstDate)
                 <text>
-            [@dage, @rekord.gentagelser],//plotter Gentagelser ift. dage på grafen
+            [@dage, @rekord.Gentagelser],//plotter Gentagelser ift. dage på grafen
 
                 </text>
             }
@@ -102,7 +101,7 @@
         ],
         element: '#line-chart',
         options: {
-            title: 'Armbøjninger',
+            title: '',
 
         width: 900,
             height: 500,

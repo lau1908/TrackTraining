@@ -2,26 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TrackTraining.DBModels;
 
 namespace TrackTraining.Models
 {
     public class ExerciseData
     {
-        public IEnumerable<ExerciseDataPoint> data { get; set; }
-        public ExerciseData(IEnumerable<ExerciseDataPoint> data) 
+        public IEnumerable<Rekorder2> data { get; set; }
+        public string name { get; set; }
+        public int id { get; set; }
+        public ExerciseData(IEnumerable<Rekorder2> data, string name, int id) 
         {
             this.data = data;
-        }
-    }
-
-    public class ExerciseDataPoint
-    {
-        public int reps { get; set; }
-        public DateTime time { get; set; }
-        public ExerciseDataPoint(int reps, DateTime time)
-        {
-            this.reps = reps;
-            this.time = time;
+            this.name = name;
+            this.id = id;
         }
     }
 }

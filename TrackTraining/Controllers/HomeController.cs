@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using TrackTraining.DBModels;
-
+using TrackTraining.Models;
 
 namespace TrackTraining.Controllers
 {
@@ -33,18 +33,17 @@ namespace TrackTraining.Controllers
 
        
         [HttpPost]
-        public ActionResult Contact(DateTime date, int Gentagelser)//bruger date og gentagelser som inputargument
+        public ActionResult Contact(DateTime date, int Gentagelser, int Id)//bruger date og gentagelser som inputargument
         {
             string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
 
             
             AspNetUser bruger = Database.AspNetUsers.FirstOrDefault(e => e.Id == uid);
-            Rekorder2 ovl = Database.Rekorder2.FirstOrDefault(i => i.BrugerId == uid);
 
             Rekorder2 Rekord = new Rekorder2()//opretter objektet Rekord 
             {
                 BrugerId = bruger.Id, //tildeler objektet Rekord 4 vaiabler
-                OvelseId = ovl.OvelseId,
+                OvelseId = Id,
                 Gentagelser = Gentagelser,  
                 dato = date,
             };
@@ -65,18 +64,14 @@ namespace TrackTraining.Controllers
 
         public ActionResult Øvelser(int ovelseId)
         {
-            string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
-            List<OvelseRekorder2> OvelseRekorder2 = new List<OvelseRekorder2>();
-            List<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == ovelseId && e.BrugerId == uid).ToList();
-            OvelseRekorder2 = rekorder.Select(x => new DBModels.OvelseRekorder2
-            {
-                Billede = x.Ovelser.Billede,
-                OvelseId = x.OvelseId,
-                OvelseNavn = x.Ovelser.OvelseNavn,
-                dato= x.dato,
-                gentagelser= x.Gentagelser
-
-            }).ToList();
+            string uid = User.Identity.GetUserId(); //erklærer "uid" til at indholde brugerens ID
+            Ovelser øvelse = Database.Ovelsers.FirstOrDefault(e => e.OvelseId == ovelseId);
+            ExerciseData data = new ExerciseData(
+                Database.Ovelsers.FirstOrDefault(e => e.OvelseId == ovelseId).Rekorder2.Where(e => e.BrugerId == uid),
+                øvelse.OvelseNavn,
+                øvelse.OvelseId
+            );
+              
             //{
             //    Ovelsers = Database.Ovelsers.Where(e => e.OvelseId == ovelseId).ToList(),
             //    Rekorder2 = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 4 && e.BrugerId == uid).ToList()
@@ -91,7 +86,7 @@ namespace TrackTraining.Controllers
             //                    ovelsers= o,
             //                    rekorder2= r,
             //              };
-            return View(OvelseRekorder2);
+            return View(data);
         }
     }
 }
