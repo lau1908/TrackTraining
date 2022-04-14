@@ -27,7 +27,7 @@ namespace TrackTraining.Controllers
         public ActionResult Contact()
         {
             string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
-            IEnumerable<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 4 && e.BrugerId == uid).AsEnumerable();
+            IEnumerable<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 5 && e.BrugerId == uid).AsEnumerable();
             return View(rekorder);//retunerer rekorder som outputargument 
         }
 
@@ -66,17 +66,19 @@ namespace TrackTraining.Controllers
         public ActionResult Øvelser(int ovelseId)
         {
             string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
-            List<OvelseRekorder2> OvelseRekorder2 = new List<OvelseRekorder2>();
-            List<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == ovelseId && e.BrugerId == uid).ToList();
-            OvelseRekorder2 = rekorder.Select(x => new DBModels.OvelseRekorder2
-            {
-                Billede = x.Ovelser.Billede,
-                OvelseId = x.OvelseId,
-                OvelseNavn = x.Ovelser.OvelseNavn,
-                dato= x.dato,
-                gentagelser= x.Gentagelser
+            IEnumerable<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == ovelseId && e.BrugerId == uid).AsEnumerable();
+            ViewBag.Ovelser = Database.Ovelsers.Where(e => e.OvelseId == ovelseId).ToList();
+            //List<OvelseRekorder2> OvelseRekorder2 = new List<OvelseRekorder2>();
+            //List<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == ovelseId && e.BrugerId == uid).ToList();
+            //OvelseRekorder2 = rekorder.Select(x => new DBModels.OvelseRekorder2
+            //{
+            //    Billede = x.Ovelser.Billede,
+            //    OvelseId = x.OvelseId,
+            //    OvelseNavn = x.Ovelser.OvelseNavn,
+            //    dato= x.dato,
+            //    gentagelser= x.Gentagelser
 
-            }).ToList();
+            //}).ToList();
             //{
             //    Ovelsers = Database.Ovelsers.Where(e => e.OvelseId == ovelseId).ToList(),
             //    Rekorder2 = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 4 && e.BrugerId == uid).ToList()
@@ -91,7 +93,7 @@ namespace TrackTraining.Controllers
             //                    ovelsers= o,
             //                    rekorder2= r,
             //              };
-            return View(OvelseRekorder2);
+            return View(rekorder);
         }
     }
 }
