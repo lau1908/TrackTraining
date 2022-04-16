@@ -36,8 +36,7 @@
 
     </div>
     <script>
-        var OvlID =
-            console.log(OvlID);
+
 
         $('#saveRecord').click(function () {
             var Gentagelser = $('#MaxReps').val();//tildeler variablen Gentagelser gentagelserne som brugeren har skrevet
@@ -49,10 +48,10 @@
 
                     type: "POST",//erklærer typen
                     dataType: "JSON",//erklærer datatypen
-                    url: "/Home/Contact",//erklærer URL
+                    url: "/Home/Contact",//erklærer URL til endpointet, som er HomeControllern 
                     data: {
                         Gentagelser: Gentagelser,
-                        date: Dato,      //er de nyerklæret variabler lig med variablerne fra HomeControllern
+                        date: Dato,      //er de nyerklæret variabler lig med variablerne fra ExerciseData
                         Id: @Model.id,
                     },
 
@@ -79,7 +78,7 @@
     const lineChart = {
         chart: null,
         data: [
-        ['Time', 'Gentagelser'],
+        ['Dage', 'Gentagelser'],
         @if (Model.data.Count() > 0)//hvis der er data i databasen køres koden
         {
             var firstDate = Model.data.First().dato;
@@ -94,7 +93,7 @@
         }else
             {
               <text>
-            [0, 0],//plotter Gentagelser ift. dage på grafen
+            [0, 0],//hvis der ikke er noget data bliver der indsat et punkt i 0.0 
 
                 </text>
             }
