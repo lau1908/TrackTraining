@@ -36,34 +36,46 @@
 
     </div>
     <script>
+        function refreshPage() {
+            location.reload(true);
+        } 
         var OvlID =
             console.log(OvlID);
 
         $('#saveRecord').click(function () {
             var Gentagelser = $('#MaxReps').val();//tildeler variablen Gentagelser gentagelserne som brugeren har skrevet
             var Dato = $('#RepDato').val(); //tildeler variablen Dato datoen som brugeren har skrevet
-
-
-            if (Gentagelser && Dato != " ") {//hvis hverken variablen Gentagelser eller Dato er = NULL køres koden
+            var today = new Date(); //får datoen i dag
+            var dato2 = new Date(Dato); //laver Dato om til en dato
+            if (dato2 > today) { //dagsdatoen bliver samlignet med det indtastede, for at se om det er "efter" i dag
+                alert("Indtast en ordentlig dato") //hvis datoen er efter, kommer denne alert frem
+            }
+            else if (Gentagelser && Dato != " ") {//hvis hverken variablen Gentagelser eller Dato er = NULL køres koden
                 $.ajax({//benytter ajax-metode til at få dataen ind til HomeControllern
 
                     type: "POST",//erklærer typen
                     dataType: "JSON",//erklærer datatypen
                     url: "/Home/Contact",//erklærer URL
+                    
                     data: {
                         Gentagelser: Gentagelser,
                         date: Dato,      //er de nyerklæret variabler lig med variablerne fra HomeControllern
                         Id: @Model.id,
                     },
-
+                    success: function (data) {
+                        return data;
+                    },
+                   
                 });
-            }
+                $("#Psaved").show();//kontrolbesked vises til brugeren for at vise at dataen er gemt
+                $('#MaxReps').val('');
+                $('#RepDato').val('');
+                setInterval('refreshPage()', 2000);
+            } 
+             
+           
 
-            $("#Psaved").show()//kontrolbesked vises til brugeren for at vise at dataen er gemt
-            $('#MaxReps').val('');
-            $('#RepDato').val('');
-
-        })
+        }) 
 
 
 
@@ -102,8 +114,8 @@
         element: '#line-chart',
         options: {
             title: '',
-
-        width: 900,
+            pointSize: 15,
+             width: 900,
             height: 500,
             curveType: 'function', //blødgør kurven
         }

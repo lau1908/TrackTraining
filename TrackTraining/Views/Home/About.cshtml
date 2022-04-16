@@ -43,6 +43,7 @@
     @foreach (var item in Model.Øvelser)
     {
         var kk = item.OvelseId;
+        
         <h1>@item.OvelseNavn</h1>
         var data = Model.data.Where(x => x.Ovelser.OvelseId == kk).Take(5);
 
@@ -51,34 +52,38 @@
                 <tr>
                     @*<th>Plads</th>*@
                     <th>Bruger</th>
-                    <th>Øvelse</th>
+                    @*<th>Øvelse</th>*@
                     <th>Gentagelser</th>
                     <th>Dato</th>
 
                 </tr>
                 
-                @foreach (var item1 in data)
-                    {
-                    
+                
+                    @foreach (var item1 in data)
+                        
+                        {
+                            
                         <tr class="Leadreko">
 
 
-                            @*<td id="number">1</td>*@
+                            @*<td id="number"></td>*@
                             <td>@item1.AspNetUser.UserName</td>
-                            <td>@item1.Ovelser.OvelseNavn</td>
+                            @*<td>@item1.Ovelser.OvelseNavn</td>*@
                             <td>@item1.Gentagelser</td>
                             <td>@item1.dato.ToShortDateString()</td>
 
 
 
                         </tr>
-                    
 
 
 
 
 
-                }
+
+                    }
+                
+
 
 
             </table>
