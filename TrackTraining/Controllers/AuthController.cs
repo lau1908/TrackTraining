@@ -16,7 +16,7 @@ namespace TrackTraining.Controllers
         private readonly UserManager<AppUser> userManager;
 
         public AuthController()
-            : this(Startup.UserManagerFactory.Invoke())
+            : this(Startup.UserManagerFactory.Invoke()) //Invoke vores usermanger 
         {
         }
 
@@ -33,20 +33,19 @@ namespace TrackTraining.Controllers
                 ReturnUrl = returnUrl
             };
 
-            return View(model);
+            return View(model);//retunerer objektet model som indeholder den sidste side som brugeren forsøgte at gå ind på
         }
 
         [HttpPost]
-        public async Task<ActionResult> LogIn(LogInModel model)
+        public async Task<ActionResult> LogIn(LogInModel model)//LogInModel bliver brugt som inputargument da Formen på loginsiden er bygget derefter
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            var user = await userManager.FindAsync(model.Username, model.Password);
-
-            if (user != null)
+            var user = await userManager.FindAsync(model.Username, model.Password);//tjekker databasen igennem for at se om der er en bruger med det username og parsword
+            if (user != null)//hvis der er en bruger med det login som der er blevet indtastet køres koden
             {
                 var identity = await userManager.CreateIdentityAsync(
                     user, DefaultAuthenticationTypes.ApplicationCookie);
