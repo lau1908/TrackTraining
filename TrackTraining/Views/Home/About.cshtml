@@ -1,35 +1,93 @@
-﻿
-@model IEnumerable<TrackTraining.DBModels.Rekorder2>
+﻿@*@model IEnumerable<TrackTraining.DBModels.Rekorder2>*@
+@model TrackTraining.Models.LeaderboardData
+
 
 
 @{
     ViewBag.Title = "About";
+    //var result = Model.OrderBy(x => x.Ovelser.OvelseNavn);
+    
 }
 
-<h2>Leaderboards</h2>
-<div class="table-wrapper">
-    <table class="fl-table">
-        <tr >
-            <th>Plads</th>
-            <th>Bruger</th>
-            <th>Øvelse</th>
-            <th>Gentagelser</th>
-            <th>Dato</th>
 
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr class="Leadreko">
-                <td id="number">1</td>
-                <td>@item.AspNetUser.UserName</td>
-                <td>@item.Ovelser.OvelseNavn</td>
-                <td>@item.Gentagelser</td>
-                <td>@item.dato.ToShortDateString()</td>
+@*<h2>Leaderboards</h2>
+
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <tr>
+                <th>Plads</th>
+                <th>Bruger</th>
+                <th>Øvelse</th>
+                <th>Gentagelser</th>
+                <th>Dato</th>
 
             </tr>
-        }
+            @foreach (var item in Model)
+            {
+                <tr class="Leadreko">
+                    <td id="number">1</td>
+                    <td>@item.AspNetUser.UserName</td>
+                    <td>@item.Ovelser.OvelseNavn</td>
+                    <td>@item.Gentagelser</td>
+                    <td>@item.dato.ToShortDateString()</td>
+
+                </tr>
+            }
 
 
-    </table>
-</div>
+        </table>
+    </div>*@
+
+<h2>Leaderboards</h2>
+
+    @foreach (var item in Model.Øvelser)
+    {
+        var kk = item.OvelseId;
+        
+        <h1>@item.OvelseNavn</h1>
+        var data = Model.data.Where(x => x.Ovelser.OvelseId == kk).Take(5);
+
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <tr>
+                    @*<th>Plads</th>*@
+                    <th>Bruger</th>
+                    @*<th>Øvelse</th>*@
+                    <th>Gentagelser</th>
+                    <th>Dato</th>
+
+                </tr>
+                
+                
+                    @foreach (var item1 in data)
+                        
+                        {
+                            
+                        <tr class="Leadreko">
+
+
+                            @*<td id="number"></td>*@
+                            <td>@item1.AspNetUser.UserName</td>
+                            @*<td>@item1.Ovelser.OvelseNavn</td>*@
+                            <td>@item1.Gentagelser</td>
+                            <td>@item1.dato.ToShortDateString()</td>
+
+
+
+                        </tr>
+
+
+
+
+
+
+                    }
+                
+
+
+
+            </table>
+        </div>
+    }
+
 

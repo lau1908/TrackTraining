@@ -153,6 +153,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Models\ExerciseData.cs" />
+    <Compile Include="Models\LeaderboardData.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Startup.cs" />
