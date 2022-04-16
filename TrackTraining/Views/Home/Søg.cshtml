@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TrackTraining.DBModels.Ovelser>
+@{
+    ViewBag.Title = "Søg";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<h2>Søg</h2>
+<style>
+    input {
+        text-align: center;
+    }
+</style>
+@*DEtte er søg siden*@
+<div>
+    @*søgefeltet*@
+    <input style="margin-left:41.5%; padding:0%; margin-top: 5%; border:solid black" type="text" id="SearchValue" placeholder="Søg her " />
+
+
+</div>
+<script>
+    $(document).ready(function () {
+        $("#SearchValue").keyup(function () {
+    @*kører en ajax funktion når man har skrevet i søgefeltet*@
+
+            $.ajax({
+
+                method: "GET",
+                url: '@Url.Action("ShowData", "Home")',
+                datatype: "JSON",
+                data: { searchvalue: $('#SearchValue').val() },
+                success: function (data) {
+                    $("#DataSearching").html(data);
+
+                },
+                error: function (error) {
+                    console.log(`Error ${error}`);
+                },
+            })
+
+
+        })
+
+
+    })
+
+
+</script>
+
+<div id="DataSearching">
+    @Html.Partial("ShowData")
+</div>

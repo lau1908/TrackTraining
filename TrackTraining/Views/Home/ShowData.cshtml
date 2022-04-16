@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TrackTraining.DBModels.Ovelser>
+<div class="Ovelsewrapper">
+
+    @foreach (var o in Model)
+    {
+    <div>
+        <div class="" id="kk">
+
+            <div class="kkkk" id="ol">
+                <a href="@Url.Action(
+                     "Øvelser", "Home", new RouteValueDictionary(new { ovelseId = o.OvelseId })
+                         )">
+                    <img id="umg" src=@o.Billede width="200" class="bild" />
+
+                </a>
+
+
+            </div>
+
+            <div class="descr ">
+                <a href="@Url.Action(
+                     "Øvelser", "Home", new RouteValueDictionary(new { ovelseId = o.OvelseId })
+                         )">
+                    <span class="navn"> @o.OvelseNavn</span>
+
+                </a>
+
+            </div>
+        </div>
+    </div>
+    }
+
+        
+
+</div>

@@ -110,5 +110,16 @@ namespace TrackTraining.Controllers
             //              };
             return View(data);
         }
+        public ActionResult Søg()
+        {
+            return View(Database.Ovelsers);
+        }
+        [HttpGet]
+        public PartialViewResult ShowData (string Searchvalue)
+        {
+
+            IEnumerable<Ovelser> Øvvelser = Database.Ovelsers.Where(e => e.OvelseNavn.Contains(Searchvalue)).AsEnumerable();
+            return PartialView("ShowData", Øvvelser);
+        }
     }
 }
