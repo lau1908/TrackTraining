@@ -7,9 +7,9 @@
 
 @Html.ValidationSummary(false)
 
-@using (Html.BeginForm())
+@using (Html.BeginForm())//Starter en ny form 
 {
-    @Html.EditorForModel()
+    @Html.EditorForModel()//Indsætter et HTML input element for hver variable i modellen(modellen er som ses øvest "LogInModel")
     <p>
         <button type="submit">Register</button>
     </p>

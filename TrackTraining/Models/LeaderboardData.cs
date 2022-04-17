@@ -6,13 +6,12 @@ using TrackTraining.DBModels;
 
 namespace TrackTraining.Models
 {
-    public class LeaderboardData
+    public class LeaderboardData ////ExerciseData er en klasse som er lavet for at struktrurerer dataen så vi kan tilgå den under "About.cshtml"
     {
         public IEnumerable<Rekorder2> data { get; set; }
         public IEnumerable<Ovelser> Øvelser { get; set; }
-        public IEnumerable<Rekorder2> gentagelser { get; set; }
-        //public IOrderedQueryable<Rekorder2> Rekorder2s { get; }
-        //public IQueryable<Ovelser> Ovelsers { get; }
+        
+       
 
         public LeaderboardData(IEnumerable<Rekorder2> data, IEnumerable<Ovelser> Øvelser)
         {
@@ -20,11 +19,6 @@ namespace TrackTraining.Models
             this.Øvelser = Øvelser;
         }
 
-        //public LeaderboardData(IOrderedQueryable<Rekorder2> rekorder2s, IQueryable<Ovelser> ovelsers)
-        //{
-        //    Rekorder2s = rekorder2s;
-        //    Ovelsers = ovelsers;
-        //}
     }
     
 }

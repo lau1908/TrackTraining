@@ -1,53 +1,23 @@
-﻿@*@model IEnumerable<TrackTraining.DBModels.Rekorder2>*@
-@model TrackTraining.Models.LeaderboardData
+﻿@model TrackTraining.Models.LeaderboardData
+
 
 
 
 @{
     ViewBag.Title = "About";
-    //var result = Model.OrderBy(x => x.Ovelser.OvelseNavn);
     
 }
 
-
-@*<h2>Leaderboards</h2>
-
-    <div class="table-wrapper">
-        <table class="fl-table">
-            <tr>
-                <th>Plads</th>
-                <th>Bruger</th>
-                <th>Øvelse</th>
-                <th>Gentagelser</th>
-                <th>Dato</th>
-
-            </tr>
-            @foreach (var item in Model)
-            {
-                <tr class="Leadreko">
-                    <td id="number">1</td>
-                    <td>@item.AspNetUser.UserName</td>
-                    <td>@item.Ovelser.OvelseNavn</td>
-                    <td>@item.Gentagelser</td>
-                    <td>@item.dato.ToShortDateString()</td>
-
-                </tr>
-            }
-
-
-        </table>
-    </div>*@
-
 <h2>Leaderboards</h2>
 
-    @foreach (var item in Model.Øvelser)
+    @foreach (var item in Model.Øvelser) //kører igennem dataen med øvelserne
     {
-        var kk = item.OvelseId;
+        var kk = item.OvelseId;//sætter variablen til at vær lig, øvelsesId'et
         
-        <h1>@item.OvelseNavn</h1>
-        var data = Model.data.Where(x => x.Ovelser.OvelseId == kk).Take(5);
+        <h1>@item.OvelseNavn</h1> //sætter navnet ind
+        var data = Model.data.Where(x => x.Ovelser.OvelseId == kk).Take(5); //laver en liste med data der matcher id'et på den øvelse, og tager de første 5 datasæt
 
-        <div class="table-wrapper">
+        <div class="table-wrapper"> @*//laver et table*@
             <table class="fl-table">
                 <tr>
                     @*<th>Plads</th>*@
@@ -59,7 +29,7 @@
                 </tr>
                 
                 
-                    @foreach (var item1 in data)
+                    @foreach (var item1 in data) //kører igennem dataen, og indsætter den
                         
                         {
                             
@@ -67,7 +37,7 @@
 
 
                             @*<td id="number"></td>*@
-                            <td>@item1.AspNetUser.UserName</td>
+                            <td>@item1.AspNetUser.UserName</td> 
                             @*<td>@item1.Ovelser.OvelseNavn</td>*@
                             <td>@item1.Gentagelser</td>
                             <td>@item1.dato.ToShortDateString()</td>

@@ -6,17 +6,17 @@ using System.Web;
 
 namespace TrackTraining.Models
 {
-    public class RegisterModel
+    public class RegisterModel //klasse til at registere ny bruger
     {
         [Required]
-        public string Username { get; set; }
+        public string Username { get; set; } //et felt til brugernavn
 
         [Required]
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public string Email { get; set; } //et felt til emailen
 
         [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Password { get; set; }//et felt til adgangskoden
     }
 }

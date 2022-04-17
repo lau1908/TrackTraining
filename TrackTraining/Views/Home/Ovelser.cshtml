@@ -16,12 +16,12 @@
 
     <div class="Ovelsewrapper">
 
-        @foreach (Ovelser o in ViewBag.Primære)
+        @foreach (Ovelser o in ViewBag.Primære) //kører igennem dataen i viewbaggen, som kommer fra homecontrolleren, og indsætter dataen
         {
         <div class="ovelsediv" style="background-image: url(@o.Billede)">
             <a href="@Url.Action(
-    "Øvelser", "Home", new RouteValueDictionary(new { ovelseId =o.OvelseId })
-    )">
+                    "Øvelser", "Home", new RouteValueDictionary(new { ovelseId =o.OvelseId }) //hvis der trykkes på denne, ville den sende et øvelsesid med videre til siden Øvelser
+                    )">
                 <p class="OvelseNam">@o.OvelseNavn </p>
 
                 </a>

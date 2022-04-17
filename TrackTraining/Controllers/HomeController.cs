@@ -21,35 +21,22 @@ namespace TrackTraining.Controllers
 
         public ActionResult About()
         {
-            //IEnumerable<Rekorder2> Leaders = Database.Rekorder2.OrderByDescending(e => e.Gentagelser);
-            //Ovelser øvelse = Database.Ovelsers.Where(e=>e.Primære.ToLower()=="yes");
+           
 
 
             LeaderboardData data = new LeaderboardData(
 
-                Database.Rekorder2.OrderByDescending(e => e.Gentagelser),
+                Database.Rekorder2.OrderByDescending(e => e.Gentagelser), //sætter den fra højst til laveste gentagelset
 
-               Database.Ovelsers.Where(e => e.Primære.ToLower() == "yes")
+               Database.Ovelsers.Where(e => e.Primære.ToLower() == "yes") //finder alle dem som er primære
 
             ) ;
 
-            //var studScores = Database.AspNetUsers.Select(x => new
-            //{
-            //    student = x,
-            //    highestscore = x.Rekorder2.Max(e=>e.Gentagelser)
-            //}).OrderByDescending(m => m.highestscore); 
-
-            //return View(Leaders);
+         
             return View(data);
         }
-        public ActionResult Contact()
-        {
-            string uid = User.Identity.GetUserId();//erklærer "uid" til at indholde brugerens ID
-            IEnumerable<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 4 && e.BrugerId == uid).AsEnumerable();
-           
-            
-            return View(rekorder);//retunerer rekorder som outputargument 
-        }
+        
+        
 
        
         [HttpPost]
@@ -79,7 +66,7 @@ namespace TrackTraining.Controllers
 
             public ActionResult Ovelser()
         {
-            ViewBag.primære = Database.Ovelsers.Where(e=>e.Primære.ToLower()!= "null").ToList();
+            ViewBag.primære = Database.Ovelsers.Where(e=>e.Primære.ToLower()!= "null").ToList(); //finder alle de primære øvelser, og putter dem i en viewbag
 
             return View();
         }
@@ -87,39 +74,25 @@ namespace TrackTraining.Controllers
         public ActionResult Øvelser(int ovelseId)
         {
             string uid = User.Identity.GetUserId(); //erklærer "uid" til at indholde brugerens ID
-            Ovelser øvelse = Database.Ovelsers.FirstOrDefault(e => e.OvelseId == ovelseId);
+            Ovelser øvelse = Database.Ovelsers.FirstOrDefault(e => e.OvelseId == ovelseId); //finder øvelsen der matcher id'et
             ExerciseData data = new ExerciseData(
                 Database.Ovelsers.FirstOrDefault(e => e.OvelseId == ovelseId).Rekorder2.OrderBy(e => e.dato).Where(e=> e.BrugerId == uid),
                 øvelse.OvelseNavn,
                 øvelse.OvelseId
             );
               
-            //{
-            //    Ovelsers = Database.Ovelsers.Where(e => e.OvelseId == ovelseId).ToList(),
-            //    Rekorder2 = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == 4 && e.BrugerId == uid).ToList()
-            //};
-            //List<Rekorder2> rekorder = Database.Rekorder2.OrderBy(e => e.dato).Where(e => e.OvelseId == ovelseId && e.BrugerId == uid).ToList();
-            //List<Ovelser> ovelsers= Database.Ovelsers.Where(e => e.OvelseId == ovelseId).ToList();
-            //var øvelser = from r in rekorder
-            //              join o in ovelsers on r.OvelseId equals o.OvelseId into table1
-            //              from o in table1.ToList()
-            //              select new OvelseRekorder2
-            //              {
-            //                    ovelsers= o,
-            //                    rekorder2= r,
-            //              };
-            return View(data);
+         return View(data);
         }
         public ActionResult Søg()
         {
-            return View(Database.Ovelsers);
+            return View(Database.Ovelsers); //indeholder alle øvelserne
         }
         [HttpGet]
-        public PartialViewResult ShowData (string Searchvalue)
+        public PartialViewResult ShowData (string Searchvalue) //tager en string SearchValue som paramet
         {
 
-            IEnumerable<Ovelser> Øvvelser = Database.Ovelsers.Where(e => e.OvelseNavn.Contains(Searchvalue)).AsEnumerable();
-            return PartialView("ShowData", Øvvelser);
+            IEnumerable<Ovelser> Øvvelser = Database.Ovelsers.Where(e => e.OvelseNavn.Contains(Searchvalue)).AsEnumerable(); //laver en liste med øvelser, som indeholder searchvalue i deres navn
+            return PartialView("ShowData", Øvvelser); //returner et partialview: "showdata", og sender listen med øvelserne med
         }
     }
 }
